@@ -7,8 +7,9 @@ import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { SharedModule } from './shared/shared.module';
-import { MatToolbarModule } from '@angular/material/toolbar';
 import { UtilsService } from './services/utils.service';
+
+import { MatToolbarModule } from '@angular/material/toolbar';
 
 @NgModule({
   declarations: [
