@@ -4,12 +4,16 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 
 const routes: Routes = [
   {
-    path: 'generator',
-    loadChildren: () => import('./generator/generator.module').then(m => m.GeneratorModule),
+    path: '',
+    loadChildren: () => import('./login/login.module').then(m => m.LoginModule),
   },
   {
     path: 'profile',
     loadChildren: () => import('./profile/profile.module').then(m => m.ProfileModule),
+  },
+  {
+    path: 'menu',
+    loadChildren: () => import('./menu/menu.module').then(m => m.MenuModule),
   },
   {
     path: '404',

@@ -1,1 +1,62 @@
-<p>profile works!</p>
+<div class="main">
+    <h2>PERFIL</h2>
+    <form>
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label># ID</mat-label>
+                <input matInput readonly [value]="loggedUser().document">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Rol</mat-label>
+                <input matInput readonly [value]="loggedUser().role.roleName">
+            </mat-form-field>
+        </div>
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>Nombres</mat-label>
+                <input matInput [value]="loggedUser().name">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Apellidos</mat-label>
+                <input matInput [value]="loggedUser().lastname">
+            </mat-form-field>
+        </div>
+        <mat-form-field appearance="outline">
+            <mat-label>Correo</mat-label>
+            <input matInput [value]="loggedUser().email" type="email">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Fecha nacimiento</mat-label>
+            <input matInput [value]="loggedUser().bornDate | date:'dd/mm/yyyy'" type="date">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Cargo</mat-label>
+            <input matInput [value]="loggedUser().role.position">
+        </mat-form-field>
+        <button mat-raised-button color="primary">
+            Modificar
+        </button>
+    </form>
+
+    <mat-divider></mat-divider>
+
+    <h2>Modificar contrasena</h2>
+    <form>
+        <mat-form-field appearance="outline">
+            <mat-label>Contrasena actual</mat-label>
+            <input matInput readonly type="password">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Nueva contrasena</mat-label>
+            <input matInput readonly type="password">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Confirmar contrasena</mat-label>
+            <input matInput readonly type="password">
+        </mat-form-field>
+
+        <button mat-raised-button color="primary">
+            Actualizar Contrasena
+        </button>
+    </form>
+</div>

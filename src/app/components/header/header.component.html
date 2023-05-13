@@ -1,8 +1,21 @@
-<mat-toolbar color="primary" class="header">
-    <button mat-button (click)="logout()">
-        Cerrar Sesion
-    </button>
-    <button mat-icon-button routerLink="/profile">
-        <mat-icon>person</mat-icon>
-    </button>
-</mat-toolbar>
+<header>
+    <mat-toolbar color="primary" class="header" role="heading">
+        <button mat-button (click)="logout()">
+            Cerrar Sesion
+        </button>
+        <button 
+            mat-icon-button 
+            routerLink="/profile" 
+            [matMenuTriggerFor]="menu" 
+            aria-label="Menu"
+        >
+            <mat-icon>person</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+            <button mat-menu-item routerLink="/menu">
+                <mat-icon>more_vert</mat-icon>
+                <span>Menu</span>
+            </button>
+        </mat-menu>
+    </mat-toolbar>
+</header>
