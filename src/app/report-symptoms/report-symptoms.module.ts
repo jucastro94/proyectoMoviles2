@@ -1,26 +1,24 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ProfileComponent } from './profile.component';
+import { ReportSymptomsComponent } from './report-symptoms.component';
 import { RouterModule, Routes } from '@angular/router';
 import { SharedModule } from '../shared/shared.module';
-import { MatDividerModule } from '@angular/material/divider';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 const routes: Routes = [
   {
     path: '',
-    component: ProfileComponent,
-  },
+    component: ReportSymptomsComponent,
+  }
 ];
 
 @NgModule({
-  declarations: [
-    ProfileComponent
-  ],
+  declarations: [ReportSymptomsComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
     SharedModule,
-    MatDividerModule,
+    MatCheckboxModule,
   ]
 })
-export class ProfileModule { }
+export class ReportSymptomsModule { }

@@ -1,0 +1,21 @@
+.main {
+    display: flex;
+    justify-content: center;
+    padding: 5%;
+    flex-direction: column;
+}
+
+form {
+    width: 75%;
+
+    .row {
+        mat-form-field {
+            width: 50%;
+        }
+    }
+}
+
+form > *  {
+    width: 100%;
+}
+

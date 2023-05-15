@@ -1,0 +1,9 @@
+form {
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+
+    mat-form-field, mat-checkbox, mat-radio-group {
+        width: 100%;
+    }
+}

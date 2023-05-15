@@ -1,0 +1,40 @@
+<div class="main">
+    <form [formGroup]="form" *ngIf="mode === 'login'; else recoverTag" (submit)="login()">
+
+        <mat-form-field appearance="outline">
+            <mat-label>Email</mat-label>
+            <input matInput type="email" formControlName="email">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Contrasena</mat-label>
+            <input matInput type="password" formControlName="password">
+        </mat-form-field>
+        
+        <a mat-button (click)="mode = 'recover'">
+            <small>He olvidado la contrasena</small>
+        </a>
+        <div class="buttonsection">
+            <button mat-raised-button color="primary" [disabled]="!form.valid" type="submit">
+                Ingresar
+            </button>
+        </div>
+    </form>
+    <ng-template #recoverTag>
+        <form>
+            <mat-form-field appearance="outline">
+                <mat-label># Cedula</mat-label>
+                <input type="number" matInput [formControl]="recover">
+            </mat-form-field>
+            
+            <a mat-button (click)="mode = 'login'">
+                <small>Ingresar</small>
+            </a>
+            <div class="buttonsection">
+                <button mat-raised-button color="primary" [disabled]="!recover.valid" type="submit">
+                    Enviar correo de recuperacion
+                </button>
+            </div>
+        </form>
+    </ng-template>
+</div>

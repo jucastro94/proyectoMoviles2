@@ -1,20 +1,24 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { MenuComponent } from './menu.component';
+import { MatRippleModule } from '@angular/material/core';
 import { RouterModule, Routes } from '@angular/router';
-import { GeneratorComponent } from './generator.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: GeneratorComponent,
-  }
+    component: MenuComponent,
+  },
 ];
 
 @NgModule({
-  declarations: [GeneratorComponent],
+  declarations: [
+    MenuComponent
+  ],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
-  ]
+    MatRippleModule,
+  ],
 })
-export class GeneratorModule { }
+export class MenuModule { }

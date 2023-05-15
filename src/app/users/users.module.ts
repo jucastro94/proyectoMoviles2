@@ -1,26 +1,26 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ProfileComponent } from './profile.component';
+import { UsersComponent } from './users.component';
 import { RouterModule, Routes } from '@angular/router';
 import { SharedModule } from '../shared/shared.module';
-import { MatDividerModule } from '@angular/material/divider';
+import { MatTableModule } from '@angular/material/table'; 
 
 const routes: Routes = [
   {
     path: '',
-    component: ProfileComponent,
+    component: UsersComponent,
   },
-];
+]
 
 @NgModule({
   declarations: [
-    ProfileComponent
+    UsersComponent
   ],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
     SharedModule,
-    MatDividerModule,
-  ]
+    MatTableModule,
+  ],
 })
-export class ProfileModule { }
+export class UsersModule { }

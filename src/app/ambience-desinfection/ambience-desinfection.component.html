@@ -1,0 +1,41 @@
+<h2>
+    Verificacion de desinfeccion de ambientes
+</h2>
+<h3>Punto de venta</h3>
+
+<mat-form-field appearance="outline">
+    <mat-label>Punto de venta</mat-label>
+    <mat-select placeholder="Seleccione...">
+        <mat-option *ngFor="let store of stores" [value]="store">
+            {{store}}
+        </mat-option>
+    </mat-select>
+</mat-form-field>
+
+<mat-form-field appearance="fill">
+    <mat-label>Hora y fecha actual</mat-label>
+    <input type="datetime" disabled matInput>
+</mat-form-field>
+
+<mat-form-field>
+    <mat-label>Area a desinfectar</mat-label>
+    <input matInput>
+</mat-form-field>
+
+<mat-form-field>
+    <mat-label></mat-label>
+    <input matInput>
+</mat-form-field>
+
+<mat-checkbox align="end">
+    Verficado
+</mat-checkbox>
+
+<div>
+    <button mat-raised-button>
+        Registrar
+    </button>
+    <button mat-raised-button color="primary">
+        Ver registros
+    </button>
+</div>
