@@ -19,7 +19,7 @@ import { AuthService } from './services/auth.service';
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    NotFoundComponent
+    NotFoundComponent,
   ],
   imports: [
     BrowserModule,

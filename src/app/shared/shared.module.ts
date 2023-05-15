@@ -6,6 +6,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [],
@@ -17,6 +18,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     MatInputModule,
     MatSnackBarModule,
     MatDialogModule,
+    HttpClientModule,
   ],
   exports: [
     MatIconModule,
@@ -25,6 +27,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     MatInputModule,
     MatSnackBarModule,
     MatDialogModule,
+    HttpClientModule,
   ],
   providers: [],
 })

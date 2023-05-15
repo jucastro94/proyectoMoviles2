@@ -16,6 +16,7 @@ export class AuthService {
   login() {
     this.isLogged.set(true);
     this.user.set(new Employee());
+    this.router.navigate(['/menu']);
   }
 
   logout() {

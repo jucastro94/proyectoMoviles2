@@ -2,22 +2,36 @@
     <div class="mat-elevation-z4 button" matRipple routerLink="/profile">
         Informacion de perfil
     </div>
-    <div class="mat-elevation-z4 button" matRipple *ngIf="loggedUser().role.manageUsers">
+    <div 
+        class="mat-elevation-z4 button" 
+        matRipple 
+        *ngIf="loggedUser().role.manageUsers"
+    >
         Nuevo empleado
     </div>
-    <div class="mat-elevation-z4 button" matRipple *ngIf="loggedUser().role.manageUsers">
+    <div 
+        class="mat-elevation-z4 button" 
+        matRipple 
+        *ngIf="loggedUser().role.manageUsers" 
+        routerLink="/users"
+    >
         Usuarios
     </div>
-    <div class="mat-elevation-z4 button" matRipple>
+    <div class="mat-elevation-z4 button" matRipple routerLink="/forms/washHands">
         Lavado de manos
     </div>
-    <div class="mat-elevation-z4 button" matRipple>
+    <div class="mat-elevation-z4 button" matRipple routerLink="/forms/reportSymptoms">
         Reporte de sintomas
     </div>
-    <div class="mat-elevation-z4 button" matRipple>
+    <div class="mat-elevation-z4 button" matRipple routerLink="/forms/ambienceDesinfection">
         Verficacion de desinfeccion de ambientes
     </div>
-    <div class="mat-elevation-z4 button" matRipple *ngIf="loggedUser().role.watchReports">
+    <div 
+        class="mat-elevation-z4 button" 
+        matRipple 
+        *ngIf="loggedUser().role.watchReports" 
+        routerLink="/reports"
+    >
         Informes por dias
     </div>
 
