@@ -13,16 +13,38 @@ export class AuthService {
 
   constructor(private router: Router) { }
 
-  login() {
+  /**
+   * almacena la token dada por el usuario and la guarda, permite al usuario pasar
+   */
+  login(): void {
     this.isLogged.set(true);
-    this.user.set(new Employee());
+    localStorage.setItem('token', '');
+    this.fetchUserData();
     this.router.navigate(['/menu']);
   }
 
-  logout() {
+  /**
+   * saca al usuario del sistema y borra de memoria local los datos de usuario
+   */
+  logout(): void {
     this.isLogged.set(false);
     this.router.navigate(['']);
     this.user.set(new NotLogged());
   }
+
+  /**
+   * solicita al servidor los datos del usuario y los almacena en memoria
+   */
+  fetchUserData() {
+    const userData = new Employee();
+    userData.name = 'maiki';
+    this.user.set(userData);
+  }
   
+  /**
+   * comprobar si esta almacenada la token en localstorage
+   */
+  checkToken(): boolean {
+    return localStorage.getItem('token') !== null;
+  }
 }

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AuthService } from './services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -7,12 +8,18 @@ import { AuthService } from './services/auth.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'proyectoAppAngular';
 
   showHeader = this.authService.isLogged;
 
-  constructor(private authService: AuthService) {
-    this.authService.login();
+  constructor(private authService: AuthService, private router: Router) {
+    const isLogged = this.authService.checkToken();
+    if (!isLogged) {
+      this.router.navigate(['']);
+      return;
+    }
+
+    this.authService.isLogged.set(true);
+    this.authService.fetchUserData();
   }
-  
+
 }

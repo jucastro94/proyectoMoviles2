@@ -1,0 +1,28 @@
+<div *ngIf="currentField">
+    <ng-container [ngSwitch]="currentField.type">
+        <div *ngSwitchCase="'text'">
+            <mat-form-field>
+                <mat-label>Etiqueta</mat-label>
+                <input matInput>
+            </mat-form-field>
+        </div>
+        <div *ngSwitchCase="'checkbox'">
+            <mat-checkbox [value]="'valor'">Etiqueta</mat-checkbox>
+        </div>
+        <div *ngSwitchDefault>
+            Ocurrio un error, intente de nuevo
+        </div>
+    </ng-container>
+</div>
+
+<mat-form-field>
+    <mat-label>Tipo de campo</mat-label>
+    <mat-select #input>
+        <mat-option value="text">Texto corto</mat-option>
+        <mat-option value="checkbox">Opcion multiple</mat-option>
+    </mat-select>
+</mat-form-field>
+
+<button mat-button (click)="add('text')">
+    agregar
+</button>

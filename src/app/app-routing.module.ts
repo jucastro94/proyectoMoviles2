@@ -16,16 +16,25 @@ const routes: Routes = [
     loadChildren: () => import('./menu/menu.module').then(m => m.MenuModule),
   },
   {
-    path: 'forms/washHands',
-    loadChildren: () => import('./wash-hands/wash-hands.module').then(m => m.WashHandsModule),
-  },
-  {
-    path: 'forms/reportSymptoms',
-    loadChildren: () => import('./report-symptoms/report-symptoms.module').then(m => m.ReportSymptomsModule),
-  },
-  {
-    path: 'forms/ambienceDesinfection',
-    loadChildren: () => import('./ambience-desinfection/ambience-desinfection.module').then(m => m.AmbienceDesinfectionModule),
+    path: 'forms',
+    children: [
+      {
+        path: 'washHands',
+        loadChildren: () => import('./wash-hands/wash-hands.module').then(m => m.WashHandsModule),
+      },
+      {
+        path: 'reportSymptoms',
+        loadChildren: () => import('./report-symptoms/report-symptoms.module').then(m => m.ReportSymptomsModule),
+      },
+      {
+        path: 'ambienceDesinfection',
+        loadChildren: () => import('./ambience-desinfection/ambience-desinfection.module').then(m => m.AmbienceDesinfectionModule),
+      },
+      {
+        path: 'generator',
+        loadChildren: () => import('./generator/generator.module').then(m => m.GeneratorModule),
+      },
+    ]
   },
   {
     path: 'reports',
