@@ -1,5 +1,4 @@
 .menu {
-    padding: 10%;
     display: grid;
     gap: 15px;
     grid-template-columns: repeat(4, 1fr);
@@ -12,17 +11,16 @@
     text-align: center;
 }
 
-
 @media screen and (max-width: 1024px) {
     .menu {
-        padding: 5%;
+        padding: 15px;
         grid-template-columns: repeat(3, 1fr);
     }
 }
 
 @media screen and (max-width: 768px) {
     .menu {
-        padding: 1%;
+        padding: 5px;
         grid-template-columns: 1fr;
     }
 }
