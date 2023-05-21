@@ -1,0 +1,9 @@
+<mat-card>
+    <mat-checkbox [value]="value">
+        {{value}}
+    </mat-checkbox>
+    <mat-form-field>
+        <mat-label>Texto de la etiqueta</mat-label>
+        <input matInput [(ngModel)]="value">
+    </mat-form-field>
+</mat-card>

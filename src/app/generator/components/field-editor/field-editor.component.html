@@ -1,0 +1,13 @@
+<div *ngIf="field">
+    <ng-container [ngSwitch]="field.type">
+        <div *ngSwitchCase="'text'">
+            <app-text-editor #textEditor></app-text-editor>
+        </div>
+        <div *ngSwitchCase="'checkbox'">
+            <app-checkbox-editor #checkboxEditor></app-checkbox-editor>
+        </div>
+        <div *ngSwitchDefault>
+            Tipo de campo no reconocido
+        </div>
+    </ng-container>
+</div>

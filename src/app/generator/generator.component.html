@@ -1,28 +1,34 @@
-<div *ngIf="currentField">
-    <ng-container [ngSwitch]="currentField.type">
-        <div *ngSwitchCase="'text'">
-            <mat-form-field>
-                <mat-label>Etiqueta</mat-label>
-                <input matInput>
-            </mat-form-field>
-        </div>
-        <div *ngSwitchCase="'checkbox'">
-            <mat-checkbox [value]="'valor'">Etiqueta</mat-checkbox>
-        </div>
-        <div *ngSwitchDefault>
-            Ocurrio un error, intente de nuevo
-        </div>
-    </ng-container>
+<div>
+    <app-field-editor [field]="field"></app-field-editor>
+    
+    <div>
+        <mat-form-field>
+            <mat-label>Tipo de campo</mat-label>
+            <mat-select #input (selectionChange)="selected = $event.value">
+                <mat-option value="text">Texto corto</mat-option>
+                <mat-option value="checkbox">Casilla de marcar</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+    <div>
+        <button mat-button (click)="invoke(selected)">
+            Crear
+        </button>
+        <button mat-button (click)="add()" [disabled]="field === undefined" color="accent">
+            Agregar
+        </button>
+    </div>
+    <div>
+        <button mat-raised-button color="primary">
+            Guardar
+        </button>
+    </div>
 </div>
 
-<mat-form-field>
-    <mat-label>Tipo de campo</mat-label>
-    <mat-select #input>
-        <mat-option value="text">Texto corto</mat-option>
-        <mat-option value="checkbox">Opcion multiple</mat-option>
-    </mat-select>
-</mat-form-field>
+<mat-divider></mat-divider>
 
-<button mat-button (click)="add('text')">
-    agregar
-</button>
+<div>
+    Vista previa del formulario
+
+    <app-form [form]="form"></app-form>
+</div>

@@ -8,19 +8,21 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { HttpClientModule } from '@angular/common/http';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
   declarations: [],
   imports: [
     CommonModule,
+    HttpClientModule,
     MatIconModule,
     MatButtonModule,
     MatFormFieldModule,
     MatInputModule,
     MatSnackBarModule,
     MatDialogModule,
-    HttpClientModule,
     MatTooltipModule,
+    MatCardModule,
   ],
   exports: [
     MatIconModule,
@@ -31,6 +33,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatDialogModule,
     HttpClientModule,
     MatTooltipModule,
+    MatCardModule,
   ],
   providers: [],
 })

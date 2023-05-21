@@ -41,10 +41,4 @@ export class AuthService {
     this.user.set(userData);
   }
   
-  /**
-   * comprobar si esta almacenada la token en localstorage
-   */
-  checkToken(): boolean {
-    return localStorage.getItem('token') !== null;
-  }
 }
