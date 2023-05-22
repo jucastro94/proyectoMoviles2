@@ -23,8 +23,8 @@ const routes: Routes = [
     path: 'forms',
     children: [
       {
-        path: ':formName',
-        loadChildren: () => import('./form-viewer/form-viewer.module').then(m => m.FormViewerModule),
+        path: 'reader',
+        loadChildren: () => import('./form-reader/form-reader.module').then(m => m.FormReaderModule),
       },
       {
         path: 'generator',
