@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Field } from '@models/field';
+import { Field, CheckboxField, RadioField, SelectorField, TextField } from '@models/field';
 
 @Component({
   selector: 'app-field-editor',
@@ -7,5 +7,10 @@ import { Field } from '@models/field';
   styleUrls: ['./field-editor.component.scss']
 })
 export class FieldEditorComponent {
-  @Input() field?: Field;
+  @Input() field!: Field;
+
+  TextField = TextField;
+  CheckboxField = CheckboxField;
+  RadioField = RadioField;
+  SelectorField = SelectorField;
 }

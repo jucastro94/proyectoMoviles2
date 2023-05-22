@@ -1,8 +1,8 @@
 <mat-card>
     <mat-card-header>
-        <mat-card-title>
+        <h2>
             {{form.title}}
-        </mat-card-title>
+        </h2>
     </mat-card-header>
 
     <mat-card-content>
@@ -15,8 +15,8 @@
             <input matInput readonly type="datetime" [value]="form.creationDate">
         </mat-form-field>
     
-        <div *ngFor="let input of form.fields">
-    
-        </div>        
+        <div [ngClass]="{'fieldContainer': false}">
+            <app-field-viewer *ngFor="let input of form.fields" [field]="input"></app-field-viewer>
+        </div>
     </mat-card-content>
 </mat-card>

@@ -23,16 +23,8 @@ const routes: Routes = [
     path: 'forms',
     children: [
       {
-        path: 'washHands',
-        loadChildren: () => import('./wash-hands/wash-hands.module').then(m => m.WashHandsModule),
-      },
-      {
-        path: 'reportSymptoms',
-        loadChildren: () => import('./report-symptoms/report-symptoms.module').then(m => m.ReportSymptomsModule),
-      },
-      {
-        path: 'ambienceDesinfection',
-        loadChildren: () => import('./ambience-desinfection/ambience-desinfection.module').then(m => m.AmbienceDesinfectionModule),
+        path: ':formName',
+        loadChildren: () => import('./form-viewer/form-viewer.module').then(m => m.FormViewerModule),
       },
       {
         path: 'generator',

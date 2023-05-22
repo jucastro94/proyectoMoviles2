@@ -1,9 +1,9 @@
-import { Component, signal } from '@angular/core';
-import { CheckboxField, Field, FieldType, TextField } from '../models/field';
+import { Component } from '@angular/core';
+import { CheckboxField, Field, FieldType, RadioField, SelectorField, TextField } from '@models/field';
 import { Form } from '@models/form';
 
-type FieldDictionary = {
-  [x in FieldType]: Field;
+type FieldDictionary<T> = {
+  [x in FieldType]: T;
 }
 
 @Component({
@@ -14,7 +14,7 @@ type FieldDictionary = {
 export class GeneratorComponent {
 
   /**
-   * form being created
+   * formulario creado
    */
   form: Form = {
     title: '',
@@ -24,22 +24,43 @@ export class GeneratorComponent {
   };
 
   /**
-   * the current field being edited
+   * el campo siendo creado actualmente
    */
   field?: Field;
 
   /**
-   * hold the type of input selected
+   * mantener el memoria el tipo de campo que se quiere crear
    */
   selected: string = '';
 
-  invoke(value: string) {
-    const indexes: FieldDictionary = {
-      'text': new TextField(),
-      'checkbox': new CheckboxField(),
-    };
-    
-    const res = indexes[value as FieldType] ?? new TextField();
+  readonly fieldIndex: FieldDictionary<Field> = {
+    'text': new TextField(),
+    'checkbox': new CheckboxField(),
+    'radio': new RadioField(),
+    'selector': new SelectorField(),
+  };
+
+  fieldTypes: {value: FieldType; label: string}[] = [
+    {
+      value: 'text',
+      label: 'Texto corto',
+    },
+    {
+      value: 'checkbox',
+      label: 'Casilla de marcar',
+    },
+    {
+      value: 'radio',
+      label: 'Opcion unica',
+    },
+    {
+      value: 'selector',
+      label: 'Seleccion',
+    },
+  ];
+
+  invoke(value: string) {    
+    const res = this.fieldIndex[value as FieldType] ?? new TextField();
     this.field = res;
   }
 
@@ -47,4 +68,9 @@ export class GeneratorComponent {
     this.form.fields.push(this.field!);
     this.field = undefined;
   }
+
+  test(data: any) {
+    console.log(data);
+  }
 }
+  
