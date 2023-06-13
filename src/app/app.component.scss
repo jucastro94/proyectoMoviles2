@@ -3,13 +3,6 @@
     flex-direction: column;
     min-height: 100vh;
 }
-  
-// app-header {
-// position: fixed;
-// top: 0;
-// left: 0;
-// right: 0;
-// }
 
 router-outlet {
     overflow-y: auto;
