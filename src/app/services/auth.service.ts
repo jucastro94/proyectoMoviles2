@@ -11,7 +11,9 @@ export class AuthService {
 
   user = signal<User>(new NotLogged());
 
-  constructor(private router: Router) { }
+  constructor(private router: Router) {
+    this.user().name = 'usertest';
+  }
 
   /**
    * almacena la token dada por el usuario and la guarda, permite al usuario pasar

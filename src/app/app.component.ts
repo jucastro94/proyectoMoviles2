@@ -12,15 +12,6 @@ export class AppComponent {
 
   showHeader = this.authService.isLogged;
 
-  constructor(private authService: AuthService, private router: Router) {
-    const isLogged = checkToken();
-    if (!isLogged) {
-      this.router.navigate(['']);
-      return;
-    }
-
-    this.authService.isLogged.set(true);
-    this.authService.fetchUserData();
-  }
+  constructor(private authService: AuthService, private router: Router) { }
 
 }
