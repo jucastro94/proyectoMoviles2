@@ -23,7 +23,7 @@ const routes: Routes = [
     path: 'forms',
     children: [
       {
-        path: 'reader',
+        path: 'reader/:id',
         loadChildren: () => import('./form-reader/form-reader.module').then(m => m.FormReaderModule),
       },
       {
