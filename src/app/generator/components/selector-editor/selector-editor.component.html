@@ -1,0 +1,30 @@
+<mat-form-field>
+    <mat-label>
+        {{field.label}}
+    </mat-label>
+    <mat-select>
+        <mat-option *ngFor="let option of field.options" [value]="option">
+            {{option}}
+        </mat-option>
+    </mat-select>
+</mat-form-field>
+
+<mat-form-field>
+    <mat-label>Opcion</mat-label>
+    <input matInput [(ngModel)]="value">
+</mat-form-field>
+
+<mat-form-field>
+    <mat-label>Etiqueta</mat-label>
+    <input matInput [(ngModel)]="field.label">
+</mat-form-field>
+
+
+<button mat-button color="accent" (click)="addOption()">
+    <mat-icon>add</mat-icon>
+    <span>Agregar</span>
+</button>
+
+<!-- <mat-checkbox>
+    Multiple
+</mat-checkbox> -->

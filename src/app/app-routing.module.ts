@@ -1,11 +1,14 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { NotFoundComponent } from './components/not-found/not-found.component';
+import { isLoggedGuard } from './guards/is-logged.guard';
+import { notLoggedGuard } from './guards/not-logged.guard';
 
 const routes: Routes = [
   {
     path: '',
     loadChildren: () => import('./login/login.module').then(m => m.LoginModule),
+    canActivate: [notLoggedGuard],
   },
   {
     path: 'profile',
@@ -14,18 +17,20 @@ const routes: Routes = [
   {
     path: 'menu',
     loadChildren: () => import('./menu/menu.module').then(m => m.MenuModule),
+    canActivate: [isLoggedGuard]
   },
   {
-    path: 'forms/washHands',
-    loadChildren: () => import('./wash-hands/wash-hands.module').then(m => m.WashHandsModule),
-  },
-  {
-    path: 'forms/reportSymptoms',
-    loadChildren: () => import('./report-symptoms/report-symptoms.module').then(m => m.ReportSymptomsModule),
-  },
-  {
-    path: 'forms/ambienceDesinfection',
-    loadChildren: () => import('./ambience-desinfection/ambience-desinfection.module').then(m => m.AmbienceDesinfectionModule),
+    path: 'forms',
+    children: [
+      {
+        path: 'reader',
+        loadChildren: () => import('./form-reader/form-reader.module').then(m => m.FormReaderModule),
+      },
+      {
+        path: 'generator',
+        loadChildren: () => import('./generator/generator.module').then(m => m.GeneratorModule),
+      },
+    ]
   },
   {
     path: 'reports',

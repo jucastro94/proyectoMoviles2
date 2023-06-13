@@ -1,0 +1,44 @@
+<div>
+    <ng-container *ngIf="field">
+        <app-field-editor [field]="field"></app-field-editor>
+    </ng-container>
+    
+    <mat-card>
+        <mat-card-content>
+            <mat-form-field>
+                <mat-label>Nombre del formulario</mat-label>
+                <input matInput [(ngModel)]="form.title">
+            </mat-form-field>
+            
+            <mat-form-field>
+                <mat-label>Tipo de campo</mat-label>
+                <mat-select #input (selectionChange)="selected = $event.value">
+                    <mat-option [value]="item.value" *ngFor="let item of fieldTypes">
+                        {{item.label}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </mat-card-content>
+
+        <mat-card-actions>
+            <button mat-button (click)="invoke(selected)">
+                Crear
+            </button>
+            <button mat-button (click)="add()" color="accent">
+                Agregar
+            </button>
+        </mat-card-actions>
+    </mat-card>
+</div>
+
+<mat-divider></mat-divider>
+
+<div>
+    Vista previa del formulario
+
+    <app-form [form]="form"></app-form>
+    
+    <button mat-raised-button color="primary">
+        Guardar
+    </button>
+</div>

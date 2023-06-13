@@ -8,29 +8,46 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { HttpClientModule } from '@angular/common/http';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatCardModule } from '@angular/material/card';
+import { MatSelectModule } from '@angular/material/select';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatRadioModule } from '@angular/material/radio';
+import { CastPipe } from '../pipes/cast.pipe';
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    CastPipe,
+  ],
   imports: [
     CommonModule,
+    HttpClientModule,
     MatIconModule,
     MatButtonModule,
     MatFormFieldModule,
     MatInputModule,
+    MatSelectModule,
+    MatCheckboxModule,
+    MatRadioModule,
     MatSnackBarModule,
     MatDialogModule,
-    HttpClientModule,
     MatTooltipModule,
+    MatCardModule,
   ],
   exports: [
     MatIconModule,
     MatButtonModule,
     MatFormFieldModule,
     MatInputModule,
+    MatSelectModule,
+    MatCheckboxModule,
+    MatRadioModule,
     MatSnackBarModule,
     MatDialogModule,
     HttpClientModule,
     MatTooltipModule,
+    MatCardModule,
+
+    CastPipe,
   ],
   providers: [],
 })

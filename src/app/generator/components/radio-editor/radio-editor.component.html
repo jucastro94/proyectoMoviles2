@@ -1,0 +1,19 @@
+<div>
+    <mat-radio-group [required]="field.optional">
+        <mat-radio-button [value]="value" *ngFor="let value of field.options; let i = index">
+            <mat-form-field>
+                <input matInput [value]="field.options[i]" (change)="setOptionValue(i, $event)">
+            </mat-form-field>
+        </mat-radio-button>
+    </mat-radio-group>
+</div>
+
+<div>
+    <button mat-button color="accent" (click)="addOption()">
+        <mat-icon>add</mat-icon>
+        <span>Opcion</span>
+    </button>
+    <mat-checkbox (change)="field.optional = $event.checked">
+        Opcional
+    </mat-checkbox>
+</div>

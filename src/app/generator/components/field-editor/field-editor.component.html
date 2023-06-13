@@ -1,0 +1,17 @@
+<ng-container [ngSwitch]="field.type">
+    <div *ngSwitchCase="'text'">
+        <app-text-editor [field]="field"></app-text-editor>
+    </div>
+    <div *ngSwitchCase="'checkbox'">
+        <app-checkbox-editor [field]="field | cast: CheckboxField"></app-checkbox-editor>
+    </div>
+    <div *ngSwitchCase="'radio'">
+        <app-radio-editor [field]="field | cast: RadioField"></app-radio-editor>
+    </div>
+    <div *ngSwitchCase="'selector'">
+        <app-selector-editor [field]="field | cast: SelectorField"></app-selector-editor>
+    </div>
+    <div *ngSwitchDefault>
+        Tipo de campo no reconocido
+    </div>
+</ng-container>

@@ -8,6 +8,8 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class HeaderComponent {
 
+  user = this.authService.user;
+
   constructor(private authService: AuthService) {}
 
   logout() {
