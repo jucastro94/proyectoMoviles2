@@ -30,4 +30,6 @@ export interface Form {
      * quien puede ver el formulario
      */
     allowed: string[];
+
+    // url: string;
 }

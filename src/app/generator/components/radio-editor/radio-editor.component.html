@@ -15,9 +15,8 @@
 </div>
 
 <div>
-    <button mat-button color="accent" (click)="addOption()">
+    <button mat-button (click)="addOption()" matTooltip="Agregar opcion">
         <mat-icon>add</mat-icon>
-        <span>Opcion</span>
     </button>
     <mat-checkbox (change)="field.optional = $event.checked">
         Opcional

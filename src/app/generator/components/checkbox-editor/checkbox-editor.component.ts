@@ -12,7 +12,7 @@ export class CheckboxEditorComponent {
   @Input()
   field = new CheckboxField();
 
-  control = new FormControl(this.field, Validators.required);
+  control = new FormControl('', Validators.required);
 
   @Output()
   validityChange = new EventEmitter<boolean>();

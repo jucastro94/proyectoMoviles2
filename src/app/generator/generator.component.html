@@ -71,7 +71,6 @@
     </mat-card-actions>
 </mat-card>
 
-
 <h3>Previsualizacion del campo</h3>
 <mat-divider></mat-divider>
 <div>
@@ -79,13 +78,11 @@
     <button 
         mat-button 
         (click)="add()" 
-        [disabled]="!field && !previewField.isValid" 
-        *ngIf="previewField"
+        [disabled]="!field" 
     >
         Agregar
     </button>
 </div>
-
 
 <h3>Vista previa del formulario</h3>
 <mat-divider></mat-divider>

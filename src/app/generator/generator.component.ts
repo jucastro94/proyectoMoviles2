@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CheckboxField, Field, FieldType, RadioField, SelectorField, TextField } from '@models/field';
 import { Form } from '@models/form';
 import { AuthService } from '../services/auth.service';
@@ -60,15 +60,15 @@ export class GeneratorComponent {
   readonly permissionIndex = [
     {
       label: 'Todos',
-      value: [new Admin(), new Employee()],
+      value: ['Administrador', 'Empleado'],
     },
     {
       label: 'Empleado',
-      value: [new Employee()],
+      value: ['Empleado'],
     },
     {
       label: 'Empleado',
-      value: [new Admin()],
+      value: ['Administrador'],
     },
   ];
 
@@ -76,7 +76,7 @@ export class GeneratorComponent {
    * indice para imprimir de manera legible para el usuario los tipos de campos que 
    * se soportan
    */
-  fieldTypes: {value: FieldType; label: string}[] = [
+  readonly fieldTypes: {value: FieldType; label: string}[] = [
     {
       value: 'text',
       label: 'Texto corto',
@@ -113,8 +113,6 @@ export class GeneratorComponent {
     {error: 'minlength', message: 'Minimo 2 caracteres'},
   ];
 
-  @ViewChild('previewField') previewField!: FieldEditorComponent;
-
   constructor(
     private builder: FormBuilder,
     private auth: AuthService,
@@ -134,7 +132,8 @@ export class GeneratorComponent {
    * agregar a los campos del formulario el campo que se esta creando
    */
   add() {
-    this.form.fields.push(this.field!);
+    const entry = Object.assign({}, this.field!);
+    this.form.fields.push(entry);
     this.field = undefined;
   }
 

@@ -9,7 +9,8 @@ import { onInputChange } from 'src/app/utilities/common';
   styleUrls: ['./selector-editor.component.scss']
 })
 export class SelectorEditorComponent {
-  @Input() field = new SelectorField();
+  @Input()
+  field = new SelectorField();
 
   @Output()
   validityChange = new EventEmitter<boolean>();

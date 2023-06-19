@@ -15,8 +15,7 @@
         <input matInput [formControl]="control" required (input)="changeInput($event)">
     </mat-form-field>
     
-    <button mat-button color="accent" (click)="addOption()" matTooltip="Agregar opcion">
+    <button mat-button (click)="addOption()" matTooltip="Agregar opcion">
         <mat-icon>add</mat-icon>
-        <span>Agregar</span>
     </button>    
 </form>

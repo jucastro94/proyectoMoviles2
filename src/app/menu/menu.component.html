@@ -30,3 +30,12 @@
     </div>
 
 </div>
+<mat-divider></mat-divider>
+<div 
+    class="mat-elevation-z4 button" 
+    *ngFor="let form of forms; let i = index" 
+    matRipple 
+    [routerLink]="'/forms/' + keys[i]"
+>
+    {{form.title}}
+</div>
