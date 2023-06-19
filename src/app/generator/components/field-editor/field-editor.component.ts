@@ -13,4 +13,6 @@ export class FieldEditorComponent {
   CheckboxField = CheckboxField;
   RadioField = RadioField;
   SelectorField = SelectorField;
+
+  isValid = false;
 }

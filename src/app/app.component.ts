@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { AuthService } from './services/auth.service';
 import { Router } from '@angular/router';
-import { checkToken } from './utils/common';
+import { checkToken } from './utilities/common';
 
 @Component({
   selector: 'app-root',

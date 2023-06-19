@@ -25,4 +25,9 @@ export interface Form {
      * fecha al momento de diligenciar o enviar la entrada de formulario
      */
     creationDate: Date;
+
+    /**
+     * quien puede ver el formulario
+     */
+    allowed: string[];
 }

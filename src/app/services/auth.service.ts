@@ -42,5 +42,5 @@ export class AuthService {
     userData.name = 'maiki';
     this.user.set(userData);
   }
-  
+
 }

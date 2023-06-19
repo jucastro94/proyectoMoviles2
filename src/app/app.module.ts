@@ -13,6 +13,8 @@ import { SharedModule } from './shared/shared.module';
 
 import { UtilsService } from './services/utils.service';
 import { AuthService } from './services/auth.service';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { TokenInterceptor } from './interceptors/token.interceptor';
 
 @NgModule({
   declarations: [
@@ -32,6 +34,12 @@ import { AuthService } from './services/auth.service';
   providers: [
     UtilsService,
     AuthService,
+
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true,
+    },
   ],
   bootstrap: [AppComponent]
 })

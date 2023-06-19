@@ -4,40 +4,40 @@
 // using http://mcg.mbitson.com/ to generate the color palettes
 
 $md-primary: (
-  50 : #eceaea,
-  100 : #d1cbcb,
-  200 : #b2a9a9,
-  300 : #938787,
-  400 : #7b6d6d,
-  500 : #645353,
-  600 : #5c4c4c,
-  700 : #524242,
-  800 : #483939,
-  900 : #362929,
-  A100 : #fd8787,
-  A200 : #fc5555,
-  A400 : #ff1f1f,
-  A700 : #ff0505,
+  50: #e0f6fa,
+  100: #b3eaf2,
+  200: #80dce9,
+  300: #4dcde0,
+  400: #26c3d9,
+  500: #00b8d2,
+  600: #00b1cd,
+  700: #00a8c7,
+  800: #00a0c1,
+  900: #0091b6,
+  A100: #dff7ff,
+  A200: #acecff,
+  A400: #79e0ff,
+  A700: #5fdaff,
   contrast: (
-    50 : #000000,
-    100 : #000000,
-    200 : #000000,
-    300 : #000000,
-    400 : #ffffff,
-    500 : #ffffff,
-    600 : #ffffff,
-    700 : #ffffff,
-    800 : #ffffff,
-    900 : #ffffff,
-    A100 : #000000,
-    A200 : #000000,
-    A400 : #ffffff,
-    A700 : #ffffff,
+    50: #000000,
+    100: #000000,
+    200: #000000,
+    300: #000000,
+    400: #000000,
+    500: #000000,
+    600: #ffffff,
+    700: #ffffff,
+    800: #ffffff,
+    900: #ffffff,
+    A100: #000000,
+    A200: #000000,
+    A400: #000000,
+    A700: #000000,
   )
 );
 
 $mytheme-primary: mat.define-palette($md-primary);
-$mytheme-accent: mat.define-palette(mat.$green-palette);
+$mytheme-accent: mat.define-palette(mat.$yellow-palette);
 $mytheme-warn: mat.define-palette(mat.$red-palette);
 
 $mytheme-theme: mat.define-light-theme((
@@ -69,7 +69,7 @@ body {
 }
 
 :root {
-  --primary: #645353;
-  --accent: green;
+  --primary: #00b8d2;
+  --accent: yellow;
   --warn: red;
 }
