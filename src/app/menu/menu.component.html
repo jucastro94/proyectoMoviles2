@@ -25,8 +25,17 @@
     >
         Informes por dias
     </div>
-    <div class="mat-elevation-z4 button" matRipple routerLink="/forms/generator">
+    <div class="mat-elevation-z4 button" matRipple routerLink="/forms/new">
         Generador de formularios
     </div>
 
+</div>
+<mat-divider></mat-divider>
+<div 
+    class="mat-elevation-z4 button" 
+    *ngFor="let form of forms; let i = index" 
+    matRipple 
+    [routerLink]=" '/forms/' + forms[i].url"
+>
+    {{form.title}}
 </div>

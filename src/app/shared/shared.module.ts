@@ -12,11 +12,12 @@ import { MatCardModule } from '@angular/material/card';
 import { MatSelectModule } from '@angular/material/select';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatRadioModule } from '@angular/material/radio';
-import { CastPipe } from '../pipes/cast.pipe';
 
+/**
+ * common task-related stuff used across the entire app
+ */
 @NgModule({
   declarations: [
-    CastPipe,
   ],
   imports: [
     CommonModule,
@@ -46,8 +47,6 @@ import { CastPipe } from '../pipes/cast.pipe';
     HttpClientModule,
     MatTooltipModule,
     MatCardModule,
-
-    CastPipe,
   ],
   providers: [],
 })

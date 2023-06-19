@@ -19,12 +19,12 @@ const routes: Routes = [
     path: 'forms',
     children: [
       {
-        path: 'reader/:id',
-        loadChildren: () => import('./form-reader/form-reader.module').then(m => m.FormReaderModule),
+        path: 'new',
+        loadChildren: () => import('./generator/generator.module').then(m => m.GeneratorModule),
       },
       {
-        path: 'generator',
-        loadChildren: () => import('./generator/generator.module').then(m => m.GeneratorModule),
+        path: ':nameId',
+        loadChildren: () => import('./form-reader/form-reader.module').then(m => m.FormReaderModule),
       },
     ]
   },

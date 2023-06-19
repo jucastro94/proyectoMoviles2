@@ -1,5 +1,7 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { FormControl, Validators } from '@angular/forms';
 import { SelectorField } from '@models/field';
+import { onInputChange } from 'src/app/utilities/common';
 
 @Component({
   selector: 'app-selector-editor',
@@ -7,12 +9,32 @@ import { SelectorField } from '@models/field';
   styleUrls: ['./selector-editor.component.scss']
 })
 export class SelectorEditorComponent {
-  @Input() field = new SelectorField();
+  @Input()
+  field = new SelectorField();
 
-  value = '';
+  @Output()
+  validityChange = new EventEmitter<boolean>();
+
+  options = new Array<FormControl>();
+
+  control = new FormControl(this.field.label, Validators.required);
 
   addOption() {
-    this.field.options.push(this.value);
-    this.value = '';
+    this.options.push(new FormControl('', Validators.required));
+  }
+
+  changeInput(event: Event) {
+    this.field.label = onInputChange(event);
+    this.checkValidity();    
+  }
+
+  changeMultiple(event: Event, index: number) {
+    this.field.options[index] = onInputChange(event);
+    this.checkValidity();
+  }
+
+  checkValidity() {
+    const foundInvalid = this.options.find(option => !option.valid);
+    this.validityChange.emit(this.control.valid && !foundInvalid);
   }
 }

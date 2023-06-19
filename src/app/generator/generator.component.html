@@ -1,15 +1,53 @@
-<div>
-    <ng-container *ngIf="field">
-        <app-field-editor [field]="field"></app-field-editor>
-    </ng-container>
-    
-    <mat-card>
-        <mat-card-content>
+<mat-card class="formConfig">
+    <mat-card-title>
+        Configuracion del formulario
+    </mat-card-title>
+    <mat-card-content>
+        <form [formGroup]="formControl">
+
             <mat-form-field>
                 <mat-label>Nombre del formulario</mat-label>
-                <input matInput [(ngModel)]="form.title">
+                <input matInput formControlName="title" required (input)="form.title = onInputChange($event)">
+                <mat-error *ngIf="formControl.dirty && formControl.errors">
+                    {{getErrorMessage(formControl, formControlErrors)}}
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Usuarios que lo podran ver</mat-label>
+                <mat-select 
+                    (selectionChange)="form.allowed = $event.value" 
+                    required 
+                    formControlName="allowed"
+                >
+                    <mat-option *ngFor="let employeeType of permissionIndex" [value]="employeeType.value">
+                        {{employeeType.label}}
+                    </mat-option>
+                </mat-select>
             </mat-form-field>
             
+        </form>
+    </mat-card-content>
+    <mat-card-actions>
+        <button 
+            mat-raised-button 
+            color="primary" 
+            (click)="submit()" 
+            matTooltip="Guardar formulario"
+            [disabled]="!(formControl.valid && form.fields.length > 0)"
+        >
+            Guardar
+        </button>
+    </mat-card-actions>
+</mat-card>
+
+<mat-card>
+    <mat-card-title>
+        Configurar campos
+    </mat-card-title>
+    <mat-card-content>
+        <form>
+
             <mat-form-field>
                 <mat-label>Tipo de campo</mat-label>
                 <mat-select #input (selectionChange)="selected = $event.value">
@@ -18,27 +56,34 @@
                     </mat-option>
                 </mat-select>
             </mat-form-field>
-        </mat-card-content>
 
-        <mat-card-actions>
-            <button mat-button (click)="invoke(selected)">
-                Crear
-            </button>
-            <button mat-button (click)="add()" color="accent">
-                Agregar
-            </button>
-        </mat-card-actions>
-    </mat-card>
-</div>
+        </form>
+    </mat-card-content>
+    <mat-card-actions>
+        <button 
+            mat-icon-button 
+            (click)="invoke(selected)" 
+            matTooltip="Crear un campo" 
+            [disabled]="selected === ''"
+        >
+            <mat-icon>add</mat-icon>
+        </button>
+    </mat-card-actions>
+</mat-card>
 
+<h3>Previsualizacion del campo</h3>
 <mat-divider></mat-divider>
-
 <div>
-    Vista previa del formulario
-
-    <app-form [form]="form"></app-form>
-    
-    <button mat-raised-button color="primary">
-        Guardar
+    <app-field-editor [field]="field" *ngIf="field" #previewField></app-field-editor>
+    <button 
+        mat-button 
+        (click)="add()" 
+        [disabled]="!field" 
+    >
+        Agregar
     </button>
 </div>
+
+<h3>Vista previa del formulario</h3>
+<mat-divider></mat-divider>
+<app-form [form]="form"></app-form>

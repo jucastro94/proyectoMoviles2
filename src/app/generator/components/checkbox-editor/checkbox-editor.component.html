@@ -1,9 +1,9 @@
-<mat-card>
+<div>
     <mat-checkbox [value]="field.label">
         {{field.label}}
     </mat-checkbox>
     <mat-form-field>
         <mat-label>Texto de la etiqueta</mat-label>
-        <input matInput [(ngModel)]="field.label">
+        <input matInput [formControl]="control" (input)="onChange($event)" required>
     </mat-form-field>
-</mat-card>
+</div>

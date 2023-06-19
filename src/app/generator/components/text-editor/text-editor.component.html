@@ -1,4 +1,4 @@
-<mat-card>
+<form [formGroup]="control">
     <mat-form-field>
         <mat-label>{{field.label}}</mat-label>
         <input matInput [required]="!field.optional" placeholder="Previsualizacion...">
@@ -7,9 +7,20 @@
     <div>
         <mat-form-field>
             <mat-label>Etiqueta</mat-label>
-            <input matInput [(ngModel)]="field.label" placeholder="Nombre...">
+            <input 
+                matInput 
+                (input)="onChange($event)"
+                placeholder="Nombre..." 
+                required 
+                formControlName="label"
+            >
         </mat-form-field>
 
-        <mat-checkbox (change)="field.optional = $event.checked">Opcional</mat-checkbox>
+        <mat-checkbox 
+            (change)="field.optional = $event.checked" 
+            formControlName="optional"
+        >
+            Opcional
+        </mat-checkbox>
     </div>
-</mat-card>
+</form>
