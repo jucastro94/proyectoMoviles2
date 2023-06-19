@@ -32,6 +32,7 @@ export class GeneratorComponent {
     author: this.auth.user().name,
     creationDate: new Date(),
     allowed: [],
+    url: '',
   };
 
   /**

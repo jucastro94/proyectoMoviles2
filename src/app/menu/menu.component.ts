@@ -13,10 +13,8 @@ export class MenuComponent {
   loggedUser: WritableSignal<User>;
 
   forms = Object.values(sampleForms) as Form[];
-  keys = Object.keys(sampleForms);
 
   constructor(private authService: AuthService) {
     this.loggedUser = this.authService.user;
-    console.log(this.keys);
   }
 }

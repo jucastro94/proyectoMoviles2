@@ -4,6 +4,11 @@ import { sampleForms } from '../utilities/constants';
 import { UtilsService } from '../services/utils.service';
 import { Form } from '@models/form';
 
+type FormAnswer = {
+  [x: string]: unknown;
+  form: string;
+}
+
 @Component({
   selector: 'app-form-reader',
   templateUrl: './form-reader.component.html',
@@ -12,6 +17,8 @@ import { Form } from '@models/form';
 export class FormReaderComponent {
 
   form?: Form;
+
+  answer?: FormAnswer;
 
   constructor(
     private route: ActivatedRoute,
@@ -28,7 +35,18 @@ export class FormReaderComponent {
       }
 
       this.form = form;
+      this.answer = {
+        form: this.form.url,
+      };
+      const fieldName = 'field' as const;
+      for (let i = 0; i < this.form.fields.length; i++) {
+        this.answer[fieldName + i] = '';
+      }
     });
+  }
+
+  submit() {
+    console.log(this.answer);
   }
 
 }

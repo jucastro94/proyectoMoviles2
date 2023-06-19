@@ -1,6 +1,6 @@
 <div *ngIf="form">
     <app-form [form]="form"></app-form>
-    <button mat-raised-button color="primary">
+    <button mat-raised-button color="primary" (click)="submit()">
         Enviar
     </button>
 </div>

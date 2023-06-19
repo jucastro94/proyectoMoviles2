@@ -31,5 +31,5 @@ export interface Form {
      */
     allowed: string[];
 
-    // url: string;
+    url: string;
 }
