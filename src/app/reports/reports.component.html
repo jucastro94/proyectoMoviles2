@@ -1,5 +1,14 @@
 <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="center">
     <mat-tab label="Lavado de manos">
+        <mat-form-field appearance="outline">
+            <mat-label>Dia inicio</mat-label>
+            <input matInput type="number">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Dia fin</mat-label>
+            <input matInput type="number">
+        </mat-form-field>
+
         <table mat-table [dataSource]="source">
             <ng-container matColumnDef="No.">
                 <th mat-header-cell *matHeaderCellDef>No.</th>
@@ -14,8 +23,21 @@
             <tr mat-header-row *matHeaderRowDef="columns"></tr>
             <tr mat-row *matRowDef="let row; columns: columns"></tr>
         </table>
+
+        <button mat-button>
+            Descargar informe
+        </button>
     </mat-tab>
     <mat-tab label="Reporte de sistemas">
+        <mat-form-field appearance="outline">
+            <mat-label>Dia inicio</mat-label>
+            <input matInput type="number">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Dia fin</mat-label>
+            <input matInput type="number">
+        </mat-form-field>
+
         <table mat-table [dataSource]="source">
             <ng-container matColumnDef="No.">
                 <th mat-header-cell *matHeaderCellDef>No.</th>
@@ -30,8 +52,21 @@
             <tr mat-header-row *matHeaderRowDef="columns"></tr>
             <tr mat-row *matRowDef="let row; columns: columns"></tr>
         </table>
+
+        <button mat-button>
+            Descargar informe
+        </button>
     </mat-tab>
     <mat-tab label="Verificacion de sistemas">
+        <mat-form-field appearance="outline">
+            <mat-label>Dia inicio</mat-label>
+            <input matInput type="number">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Dia fin</mat-label>
+            <input matInput type="number">
+        </mat-form-field>
+
         <table mat-table [dataSource]="source">
             <ng-container matColumnDef="No.">
                 <th mat-header-cell *matHeaderCellDef>No.</th>
@@ -46,5 +81,9 @@
             <tr mat-header-row *matHeaderRowDef="columns"></tr>
             <tr mat-row *matRowDef="let row; columns: columns"></tr>
         </table>
+
+        <button mat-button>
+            Descargar informe
+        </button>
     </mat-tab>
 </mat-tab-group>

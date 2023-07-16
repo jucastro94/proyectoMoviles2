@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
+import { User } from '@models/user';
 
 @Component({
   selector: 'app-users',
@@ -9,16 +10,7 @@ import { MatTableDataSource } from '@angular/material/table';
 export class UsersComponent {
 
   // hardcoded data that should come from the contructor as API response
-  private source = [
-    {
-      name: 'mike',
-      id: '12111',
-    },
-    {
-      name: 'no c',
-      id: '2543',
-    },
-  ];
+  private source: User[] = new Array();
 
   columns = ['No.', 'Nombre'];
 

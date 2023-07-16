@@ -7,7 +7,12 @@
 
             <mat-form-field>
                 <mat-label>Nombre del formulario</mat-label>
-                <input matInput formControlName="title" required (input)="form.title = onInputChange($event)">
+                <input 
+                    matInput 
+                    formControlName="title" 
+                    required 
+                    (input)="form.title = onInputChange($event); form.name = turnToValid(form.title)"
+                >
                 <mat-error *ngIf="formControl.dirty && formControl.errors">
                     {{getErrorMessage(formControl, formControlErrors)}}
                 </mat-error>

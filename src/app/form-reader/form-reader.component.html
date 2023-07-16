@@ -1,5 +1,5 @@
-<div *ngIf="form">
-    <app-form [form]="form"></app-form>
+<div *ngIf="form && answer">
+    <app-form [form]="form" [(answer)]="answer"></app-form>
     <button mat-raised-button color="primary" (click)="submit()">
         Enviar
     </button>

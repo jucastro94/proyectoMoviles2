@@ -5,6 +5,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { MatTabsModule } from '@angular/material/tabs'; 
 import { SharedModule } from '../shared/shared.module';
 import { MatTableModule } from '@angular/material/table'; 
+import { FormBuilderModule } from '../shared/form-builder.module';
 
 const routes: Routes = [
   {
@@ -23,6 +24,7 @@ const routes: Routes = [
     SharedModule,
     MatTabsModule,
     MatTableModule,
+    FormBuilderModule,
   ],
 })
 export class ReportsModule { }

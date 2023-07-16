@@ -1,11 +1,9 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CheckboxField, Field, FieldType, RadioField, SelectorField, TextField } from '@models/field';
 import { Form } from '@models/form';
 import { AuthService } from '../services/auth.service';
-import { Admin, Employee } from '@models/user';
-import { onInputChange } from '../utilities/common';
-import { FieldEditorComponent } from './components/field-editor/field-editor.component';
+import { onInputChange, turnToValidFieldName } from '../utilities/common';
 
 type FieldDictionary<T> = {
   [x in FieldType]: T;
@@ -23,6 +21,8 @@ type FormError = {
 })
 export class GeneratorComponent {
 
+  turnToValid = turnToValidFieldName;
+
   /**
    * formulario creado
    */
@@ -32,7 +32,7 @@ export class GeneratorComponent {
     author: this.auth.user().name,
     creationDate: new Date(),
     allowed: [],
-    url: '',
+    name: '',
   };
 
   /**

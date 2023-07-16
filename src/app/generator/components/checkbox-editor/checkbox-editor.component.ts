@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { CheckboxField } from '@models/field';
-import { onInputChange } from 'src/app/utilities/common';
+import { onInputChange, turnToValidFieldName } from 'src/app/utilities/common';
 
 @Component({
   selector: 'app-checkbox-editor',
@@ -18,7 +18,9 @@ export class CheckboxEditorComponent {
   validityChange = new EventEmitter<boolean>();
 
   onChange(event: Event) {
-    this.field.label = onInputChange(event);
+    const value = onInputChange(event);
+    this.field.label = value;
+    this.field.name = turnToValidFieldName(value);
     this.validityChange.emit(this.control.valid);
   }
 }

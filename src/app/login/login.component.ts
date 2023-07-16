@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../services/auth.service';
+import { UtilsService } from '../services/utils.service';
 
 @Component({
   selector: 'app-login',
@@ -26,11 +27,20 @@ export class LoginComponent {
 
   mode: 'login' | 'recover' = 'login';
 
-  constructor(private authService: AuthService) {}
+  constructor(
+    private authService: AuthService,
+    private readonly utils: UtilsService,
+  ) {}
   
   login() {
     if (this.form.valid) {
-      this.authService.login();
+      const { email, password } = this.form.value;
+      if (email && password) {
+        this.authService.login(email, password);
+        return;
+      }
+
+      this.utils.showNotification('los valores no son validos');
     }
   }
   

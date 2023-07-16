@@ -1,4 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Answer } from '@models/answer';
 import { Form } from '@models/form';
 
 @Component({
@@ -8,5 +9,12 @@ import { Form } from '@models/form';
 })
 export class FormComponent {
 
-  @Input() form!: Form;
+  @Input()
+  form!: Form;
+
+  @Input()
+  answer!: Answer;
+
+  @Output()
+  answerChange = new EventEmitter<Answer>();
 }

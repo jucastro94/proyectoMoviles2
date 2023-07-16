@@ -1,8 +1,13 @@
+import { signal } from "@angular/core";
+import { Dictionary } from "@models/dictionary";
+
 /**
   * comprobar si esta almacenada la token en localstorage
   */
 export const checkToken = (): boolean => {
-  return localStorage.getItem('token') !== null;
+  const possible = localStorage.getItem('token');
+  const cond = possible  !== null && possible !== undefined;
+  return cond;
 }
 
 /**
@@ -12,6 +17,14 @@ export const checkToken = (): boolean => {
  */
 export const getToken = (): string => {
   return localStorage.getItem('token')!
+}
+
+/**
+ * usar solo si se tiene el token
+ * @returns id de usuario
+ */
+export const getId = (): string => {
+  return localStorage.getItem('id')!;
 }
 
 /**
@@ -28,3 +41,38 @@ export const onInputChange = (event: Event): string => {
   const inputValue = (event.target as HTMLInputElement).value;
   return inputValue;
 }
+
+/**
+ * direccion de la api
+ */
+export const API = 'http://localhost:3000';
+
+/**
+ * convetir un string dado por un usuario en uno valido para usar en db o js objects. haciendo lo siguiente:
+ * 1. remover tildes
+ * 2. reemplazar espacios por guiones
+ * 3. remover espacios de principio y fin
+ * 4. volver todo minusculas.
+ * 5. retornar resultado.
+ * @param string nombre de campo
+ * @returns nombre de campo pero valido para usar como llave-valor
+ */
+export const turnToValidFieldName = (string: string): string => {
+  const tildes: Dictionary<string> = {
+    'á': 'a', 'é': 'e', 'í': 'i', 'ó': 'o', 'ú': 'u', 'ñ': 'n',
+    'Á': 'A', 'É': 'E', 'Í': 'I', 'Ó': 'O', 'Ú': 'U', 'Ñ': 'N'
+  };
+
+  const validCharsRegex = /[a-zA-Z0-9\s]/g;
+
+  const transformedString = string
+    .replace(/[áéíóúñÁÉÍÓÚÑ]/g, char => tildes[char])
+    .replace(/\s/g, '-')
+    .replace(validCharsRegex, '')
+    .trim()
+    .toLowerCase();
+
+  return transformedString;
+};
+
+const value = signal(1);

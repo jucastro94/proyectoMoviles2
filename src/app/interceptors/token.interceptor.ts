@@ -15,7 +15,7 @@ import { checkToken, getToken } from '../utilities/common';
 export class TokenInterceptor implements HttpInterceptor {
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-    this.handleToken(request);
+    request = this.handleToken(request);
     return next.handle(request);
   }
 
@@ -29,7 +29,7 @@ export class TokenInterceptor implements HttpInterceptor {
     if (checkToken()) {
       const token = `Bearer ${getToken()}`;
       const headers = request.headers.set('Authorization', token);
-      request = request.clone({headers});
+      request = request.clone({headers});      
     }
     return request;
   }
