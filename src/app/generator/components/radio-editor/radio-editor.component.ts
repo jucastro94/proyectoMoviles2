@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { RadioField } from '@models/field';
+import { turnToValidFieldName } from 'src/app/utilities/common';
 
 @Component({
   selector: 'app-radio-editor',
@@ -15,6 +16,8 @@ export class RadioEditorComponent {
 
   options = new Array<FormControl>();
 
+  control = new FormControl('', Validators.required);
+
   addOption() {
     this.options.push(new FormControl('', Validators.required));
     this.field.options.push('');
@@ -27,4 +30,13 @@ export class RadioEditorComponent {
     this.validityChange.emit(!foundInvalid);
   }
 
+  setName() {
+    const label = this.control.value;
+    if (label) {
+      const name = turnToValidFieldName(label);
+      this.field.name = name
+      this.field.label = label;
+    }
+  }
+  
 }

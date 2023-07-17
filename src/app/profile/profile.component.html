@@ -1,62 +1,107 @@
-<div class="main">
+<div class="main" *ngIf="loggedUser">
     <h2>PERFIL</h2>
-    <form>
+    <form [formGroup]="control">
         <div class="row">
             <mat-form-field appearance="outline">
                 <mat-label># ID</mat-label>
-                <input matInput readonly [value]="loggedUser().document">
+                <input matInput formControlName="id" readonly>
             </mat-form-field>
             <mat-form-field appearance="outline">
                 <mat-label>Rol</mat-label>
-                <input matInput readonly [value]="loggedUser().role.roleName">
+                <mat-select formControlName="role">
+                    <mat-option value="Empleado">Empleado</mat-option>
+                    <mat-option value="Administrador">Administrador</mat-option>
+                </mat-select>
             </mat-form-field>
         </div>
         <div class="row">
             <mat-form-field appearance="outline">
                 <mat-label>Nombres</mat-label>
-                <input matInput [value]="loggedUser().name">
+                <input matInput formControlName="name">
             </mat-form-field>
             <mat-form-field appearance="outline">
                 <mat-label>Apellidos</mat-label>
-                <input matInput [value]="loggedUser().lastname">
+                <input matInput formControlName="lastname">
             </mat-form-field>
         </div>
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>Documento</mat-label>
+                <input matInput formControlName="document">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Tipo de documento</mat-label>
+                <mat-select formControlName="typeDocument">
+                    <mat-option value="C.C.">C.C.</mat-option>
+                    <mat-option value="T.I.">T.I.</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+
+        <div class="row">
+            <mat-checkbox formControlName="manageUsers">
+                Manejo de usuarios
+            </mat-checkbox>
+            <mat-checkbox formControlName="watchReports">
+                Acceso a reportes
+            </mat-checkbox>
+        </div>
+
         <mat-form-field appearance="outline">
             <mat-label>Correo</mat-label>
-            <input matInput [value]="loggedUser().email" type="email">
+            <input matInput formControlName="email" type="email">
         </mat-form-field>
         <mat-form-field appearance="outline">
             <mat-label>Fecha nacimiento</mat-label>
-            <input matInput [value]="loggedUser().bornDate | date:'dd/mm/yyyy'" type="date">
+            <input matInput formControlName="bornDate" type="date">
         </mat-form-field>
         <mat-form-field appearance="outline">
             <mat-label>Cargo</mat-label>
-            <input matInput [value]="loggedUser().role.position">
+            <input matInput formControlName="position">
         </mat-form-field>
-        <button mat-raised-button color="primary">
+
+        <button 
+            mat-raised-button 
+            color="primary" 
+            (click)="modifyBody()" 
+            [disabled]="control.invalid" 
+            *ngIf="!isNew"
+        >
             Modificar
+        </button>
+        <button 
+            mat-raised-button 
+            color="primary"
+            (click)="createBody()" 
+            *ngIf="isNew"
+        >
+            Crear
         </button>
     </form>
 
     <mat-divider></mat-divider>
 
     <h2>Modificar contrasena</h2>
-    <form>
+    <form [formGroup]="passwordManager">
         <mat-form-field appearance="outline">
             <mat-label>Contrasena actual</mat-label>
-            <input matInput readonly type="password">
+            <input matInput type="password" formControlName="oldPassword">
         </mat-form-field>
         <mat-form-field appearance="outline">
             <mat-label>Nueva contrasena</mat-label>
-            <input matInput readonly type="password">
+            <input matInput type="password" formControlName="newPassword">
         </mat-form-field>
         <mat-form-field appearance="outline">
             <mat-label>Confirmar contrasena</mat-label>
-            <input matInput readonly type="password">
+            <input matInput type="password" formControlName="confirmPassword">
         </mat-form-field>
 
-        <button mat-raised-button color="primary">
+        <button mat-raised-button color="primary" (click)="changePassword()" [disabled]="passwordManager.invalid">
             Actualizar Contrasena
         </button>
     </form>
+
+    <button mat-raised-button color="warn" *ngIf="showDelete" (click)="deleteUser()">
+        Eliminar
+    </button>
 </div>

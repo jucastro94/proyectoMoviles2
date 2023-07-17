@@ -1,7 +1,7 @@
 import { Role } from "./role";
 
 export interface User {
-    id: string;
+    _id?: string;
     email: string;
     password: string;
     document: string;
@@ -13,7 +13,7 @@ export interface User {
 }
 
 export class NotLogged implements User {
-    id = '';
+    _id = '';
     email = '';
     password = '';
     document = '';
@@ -31,7 +31,7 @@ export class NotLogged implements User {
 }
 
 export class Employee implements User {
-    id = '';
+    _id = '';
     email = '';
     password = '';
     document = '';
@@ -49,7 +49,7 @@ export class Employee implements User {
 }
 
 export class Admin implements User {
-    id = '';
+    _id = '';
     email = '';
     password = '';
     document = '';

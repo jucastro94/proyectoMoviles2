@@ -6,17 +6,21 @@
     </mat-card-header>
 
     <mat-card-content>
-        <!-- <mat-form-field>
+        <mat-form-field>
             <mat-label># ID</mat-label>
-            <input matInput readonly [value]="form.author">
-        </mat-form-field> -->
+            <input matInput readonly [value]="answer.author">
+        </mat-form-field>
         <mat-form-field>
             <mat-label>Hora y fecha actual</mat-label>
-            <input matInput readonly type="datetime" [value]="form.creationDate">
+            <input matInput readonly type="datetime" [value]="answer.creationDate">
         </mat-form-field>
     
-        <div [ngClass]="{'fieldContainer': false}">
-            <app-field-viewer *ngFor="let input of form.fields" [field]="input"></app-field-viewer>
+        <div>
+            <app-field-viewer 
+                *ngFor="let input of form.fields" 
+                [field]="input"
+            >
+            </app-field-viewer>
         </div>
     </mat-card-content>
 </mat-card>

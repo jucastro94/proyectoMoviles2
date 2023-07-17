@@ -19,5 +19,8 @@ export interface Role {
      */
     readonly access: boolean;
 
+    /**
+     * nombre del cargo dentro de la empresa
+     */
     readonly position: string;
 }

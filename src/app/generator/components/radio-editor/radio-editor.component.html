@@ -1,5 +1,5 @@
 <div>
-    <mat-radio-group [required]="field.optional">
+    <mat-radio-group required>
         <mat-radio-button *ngFor="let control of options; let i = index">
             <mat-form-field>
                 <input 
@@ -15,10 +15,11 @@
 </div>
 
 <div>
-    <button mat-button (click)="addOption()" matTooltip="Agregar opcion">
+    <mat-form-field>
+        <mat-label>Nombre del campo</mat-label>
+        <input matInput [formControl]="control" (input)="setName()">
+    </mat-form-field>
+    <button mat-button (click)="addOption()" matTooltip="Agregar opcion" [disabled]="control.invalid">
         <mat-icon>add</mat-icon>
     </button>
-    <mat-checkbox (change)="field.optional = $event.checked">
-        Opcional
-    </mat-checkbox>
 </div>

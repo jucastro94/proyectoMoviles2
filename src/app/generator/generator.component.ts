@@ -1,11 +1,13 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CheckboxField, Field, FieldType, RadioField, SelectorField, TextField } from '@models/field';
 import { Form } from '@models/form';
 import { AuthService } from '../services/auth.service';
-import { Admin, Employee } from '@models/user';
-import { onInputChange } from '../utilities/common';
-import { FieldEditorComponent } from './components/field-editor/field-editor.component';
+import { onInputChange, turnToValidFieldName } from '../utilities/common';
+import { Answer } from '@models/answer';
+import { FormsService } from '../services/forms.service';
+import { UtilsService } from '../services/utils.service';
+import { Router } from '@angular/router';
 
 type FieldDictionary<T> = {
   [x in FieldType]: T;
@@ -23,16 +25,24 @@ type FormError = {
 })
 export class GeneratorComponent {
 
+  turnToValid = turnToValidFieldName;
+
   /**
    * formulario creado
    */
   form: Form = {
     title: '',
     fields: [],
-    author: this.auth.user().name,
+    author: this.auth.user()._id!,
     creationDate: new Date(),
     allowed: [],
-    url: '',
+    name: '',
+  };
+
+  answer: Answer = {
+    author: this.auth.user()._id!,
+    form: '',
+    creationDate: new Date(),
   };
 
   /**
@@ -106,7 +116,6 @@ export class GeneratorComponent {
       Validators.required,
       Validators.minLength(2),
     ])],
-    allowed: [null, Validators.required],
   });
 
   formControlErrors: FormError[] = [
@@ -117,6 +126,9 @@ export class GeneratorComponent {
   constructor(
     private builder: FormBuilder,
     private auth: AuthService,
+    private forms: FormsService,
+    private utils: UtilsService,
+    private router: Router,
   ) { }
 
   /**
@@ -142,8 +154,13 @@ export class GeneratorComponent {
    * enviar al servidor el objeto con la estructura del formulario
    */
   submit() {
-    console.log(this.form);
-    throw new Error('TODO');
+    this.forms.createForm(this.form).subscribe({
+      next: () => {
+        this.utils.showNotification('formulario creado');
+        this.router.navigate(['/menu']);
+      },
+      error: () => this.utils.showNotification('no se pudo crear el formulario'),
+    });
   }
 
   getErrorMessage(group: FormGroup, errors: FormError[]): string {

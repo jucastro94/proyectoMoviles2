@@ -1,13 +1,10 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { sampleForms } from '../utilities/constants';
 import { UtilsService } from '../services/utils.service';
 import { Form } from '@models/form';
-
-type FormAnswer = {
-  [x: string]: unknown;
-  form: string;
-}
+import { Answer } from '@models/answer';
+import { AuthService } from '../services/auth.service';
+import { FormsService } from '../services/forms.service';
 
 @Component({
   selector: 'app-form-reader',
@@ -18,31 +15,43 @@ export class FormReaderComponent {
 
   form?: Form;
 
-  answer?: FormAnswer;
+  answer?: Answer;
+
+  user = this.auth.user;
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private utils: UtilsService,
+    private auth: AuthService,
+    private forms: FormsService
   ) {
     this.route.params.subscribe(params => {
-      const id = params['nameId'];
-      const form = sampleForms[id] as Form;
-      if (!form) {
-        this.utils.showNotification('Este formulario no existe');
-        this.router.navigate(['/menu']);
-        return;
-      }
-
-      this.form = form;
-      this.answer = {
-        form: this.form.url,
-      };
-      const fieldName = 'field' as const;
-      for (let i = 0; i < this.form.fields.length; i++) {
-        this.answer[fieldName + i] = '';
-      }
+      const id: string = params['nameId'];
+      this.forms.getFormByName(id).subscribe({
+        next: (form) => {
+          this.form = form;
+          this.createAnswer(this.form);    
+        },
+        error: () => {
+          this.utils.showNotification('Este formulario no existe');
+          this.router.navigate(['/menu']);  
+        }
+      });
     });
+  }
+
+  createAnswer(form: Form): Answer {
+    this.answer = {
+      form: form.name,
+      creationDate: new Date(),
+      author: this.user()._id!,
+    };
+
+    for (const field of form.fields) {
+      this.answer[field.name] = '';
+    }
+    return this.answer;
   }
 
   submit() {

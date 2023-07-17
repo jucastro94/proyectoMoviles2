@@ -4,7 +4,7 @@ import { Field } from "./field";
  * representacion de un formulario generico dinamicamente creado.
  */
 export interface Form {
-    id?: string;
+    _id?: string;
 
     /**
      * nombre del formulario
@@ -31,5 +31,8 @@ export interface Form {
      */
     allowed: string[];
 
-    url: string;
+    /**
+     * nombre del formulario en url
+     */
+    name: string;
 }

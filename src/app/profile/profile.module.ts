@@ -4,6 +4,7 @@ import { ProfileComponent } from './profile.component';
 import { RouterModule, Routes } from '@angular/router';
 import { SharedModule } from '../shared/shared.module';
 import { MatDividerModule } from '@angular/material/divider';
+import { FormBuilderModule } from '../shared/form-builder.module';
 
 const routes: Routes = [
   {
@@ -21,6 +22,7 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     SharedModule,
     MatDividerModule,
+    FormBuilderModule
   ]
 })
 export class ProfileModule { }

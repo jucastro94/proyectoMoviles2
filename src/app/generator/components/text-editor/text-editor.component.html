@@ -1,7 +1,7 @@
 <form [formGroup]="control">
     <mat-form-field>
         <mat-label>{{field.label}}</mat-label>
-        <input matInput [required]="!field.optional" placeholder="Previsualizacion...">
+        <input matInput required placeholder="Previsualizacion...">
     </mat-form-field>
 
     <div>
@@ -15,12 +15,5 @@
                 formControlName="label"
             >
         </mat-form-field>
-
-        <mat-checkbox 
-            (change)="field.optional = $event.checked" 
-            formControlName="optional"
-        >
-            Opcional
-        </mat-checkbox>
     </div>
 </form>

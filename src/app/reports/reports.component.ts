@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { FormsService } from '../services/forms.service';
+import { Answer } from '@models/answer';
 
 @Component({
   selector: 'app-reports',
@@ -7,16 +9,13 @@ import { Component } from '@angular/core';
 })
 export class ReportsComponent {
 
-  source = [
-    {
-      name: 'a',
-      lastname: 'a'
-    },
-    {
-      name: 'b',
-      lastname: 'b'
-    },
-  ];
+  source: Answer[] = [];
 
-  columns = ['No.', 'Nombre'];
+  columns: string[] = [];
+
+  constructor(private forms: FormsService) {
+    this.forms.getAllForms().subscribe(data => {
+      data.forEach(form => this.columns.push(form.title));
+    });
+  }
 }
