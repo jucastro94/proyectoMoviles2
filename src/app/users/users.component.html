@@ -5,6 +5,10 @@
     <input matInput (keyup)="applyFilter($event)" placeholder="Pepe Lopez." #input>
 </mat-form-field>
 
+<button color="primary" routerLink="/profile/new" mat-button *ngIf="logged.role.manageUsers">
+    Nuevo usuario
+</button>
+
 <table mat-table [dataSource]="dataSource">
     <ng-container matColumnDef="No.">
         <th mat-header-cell *matHeaderCellDef></th>
@@ -16,7 +20,7 @@
     <ng-container matColumnDef="Nombre">
         <th mat-header-cell *matHeaderCellDef></th>
         <td mat-cell *matCellDef="let element">
-            <button mat-raised-button color="accent" [routerLink]="'/profile/' + element.url">
+            <button mat-raised-button color="accent" [routerLink]="'/profile/' + element._id">
                 Ver perfil
             </button>
         </td>

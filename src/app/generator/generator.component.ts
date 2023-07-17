@@ -4,6 +4,7 @@ import { CheckboxField, Field, FieldType, RadioField, SelectorField, TextField }
 import { Form } from '@models/form';
 import { AuthService } from '../services/auth.service';
 import { onInputChange, turnToValidFieldName } from '../utilities/common';
+import { Answer } from '@models/answer';
 
 type FieldDictionary<T> = {
   [x in FieldType]: T;
@@ -29,10 +30,16 @@ export class GeneratorComponent {
   form: Form = {
     title: '',
     fields: [],
-    author: this.auth.user().name,
+    author: this.auth.user()._id!,
     creationDate: new Date(),
     allowed: [],
     name: '',
+  };
+
+  answer: Answer = {
+    author: this.auth.user()._id!,
+    form: '',
+    creationDate: new Date(),
   };
 
   /**
@@ -106,7 +113,6 @@ export class GeneratorComponent {
       Validators.required,
       Validators.minLength(2),
     ])],
-    allowed: [null, Validators.required],
   });
 
   formControlErrors: FormError[] = [
@@ -143,7 +149,6 @@ export class GeneratorComponent {
    */
   submit() {
     console.log(this.form);
-    throw new Error('TODO');
   }
 
   getErrorMessage(group: FormGroup, errors: FormError[]): string {

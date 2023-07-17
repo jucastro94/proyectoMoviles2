@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { NotLogged, User } from '../models/user';
 import { HttpClient } from '@angular/common/http';
 import { API } from '../utilities/common';
+import { map } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -50,7 +51,32 @@ export class AuthService {
    * solicita al servidor los datos del usuario y los almacena en memoria
    */
   fetchUserData(id: string) {
-    return this.http.get<User>(`${this.path}/getOne/${id}`);
+    return this.http.get<User>(`${this.path}/getOne/${id}`).pipe(
+      map(response => {
+        response.bornDate = new Date(response.bornDate);
+        return response;
+      })
+    );
   }
 
+  updateUser(newUser: User) {
+    return this.http.put<void>(`${this.path}/update`, newUser);
+  }
+
+  changePassword(userid: string, password: string) {
+    const path = `${this.path}/newPassword?password=${password}&id=${userid}`;
+    return this.http.put<void>(path, null);
+  }
+
+  getAllUsers() {
+    return this.http.get<User[]>(`${this.path}/getAll`);
+  }
+
+  createUser(user: User) {
+    return this.http.post<User>(`${this.path}/register`, user);
+  }
+
+  deleteAccount(userid: string) {
+    return this.http.delete<void>(`${this.path}/delete`);
+  }
 }

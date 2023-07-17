@@ -63,7 +63,7 @@ export const turnToValidFieldName = (string: string): string => {
     'Á': 'A', 'É': 'E', 'Í': 'I', 'Ó': 'O', 'Ú': 'U', 'Ñ': 'N'
   };
 
-  const validCharsRegex = /[a-zA-Z0-9\s]/g;
+  const validCharsRegex = new RegExp("^[A-Za-z0-9@#$%^&+=*!]+(?: [A-Za-z0-9@#$%^&+=*!]+)?$");
 
   const transformedString = string
     .replace(/[áéíóúñÁÉÍÓÚÑ]/g, char => tildes[char])
@@ -74,5 +74,3 @@ export const turnToValidFieldName = (string: string): string => {
 
   return transformedString;
 };
-
-const value = signal(1);

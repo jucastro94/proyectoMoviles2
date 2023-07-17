@@ -15,7 +15,7 @@ export class AppComponent {
   constructor(private authService: AuthService, private router: Router) { 
     if (checkToken()) {
       const id = getId();
-      this.authService.fetchUserData(id).subscribe(data => {
+      this.authService.fetchUserData(id).subscribe(data => {        
         this.authService.user.set(data);
         this.authService.isLogged.set(true);
       });

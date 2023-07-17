@@ -45,7 +45,7 @@ export class FormReaderComponent {
     this.answer = {
       form: form.name,
       creationDate: new Date(),
-      author: this.user()._id,
+      author: this.user()._id!,
     };
 
     for (const field of form.fields) {

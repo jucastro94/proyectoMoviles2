@@ -17,19 +17,6 @@
                     {{getErrorMessage(formControl, formControlErrors)}}
                 </mat-error>
             </mat-form-field>
-
-            <mat-form-field>
-                <mat-label>Usuarios que lo podran ver</mat-label>
-                <mat-select 
-                    (selectionChange)="form.allowed = $event.value" 
-                    required 
-                    formControlName="allowed"
-                >
-                    <mat-option *ngFor="let employeeType of permissionIndex" [value]="employeeType.value">
-                        {{employeeType.label}}
-                    </mat-option>
-                </mat-select>
-            </mat-form-field>
             
         </form>
     </mat-card-content>
@@ -91,4 +78,4 @@
 
 <h3>Vista previa del formulario</h3>
 <mat-divider></mat-divider>
-<app-form [form]="form"></app-form>
+<app-form [form]="form" [answer]="answer"></app-form>
