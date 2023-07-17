@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { SelectorField } from '@models/field';
-import { onInputChange } from 'src/app/utilities/common';
+import { onInputChange, turnToValidFieldName } from 'src/app/utilities/common';
 
 @Component({
   selector: 'app-selector-editor',
@@ -24,8 +24,10 @@ export class SelectorEditorComponent {
   }
 
   changeInput(event: Event) {
-    this.field.label = onInputChange(event);
-    this.checkValidity();    
+    const value = onInputChange(event);
+    this.field.label = value;
+    this.field.name = turnToValidFieldName(value);
+    this.checkValidity();
   }
 
   changeMultiple(event: Event, index: number) {

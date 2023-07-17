@@ -15,7 +15,11 @@
 </div>
 
 <div>
-    <button mat-button (click)="addOption()" matTooltip="Agregar opcion">
+    <mat-form-field>
+        <mat-label>Nombre del campo</mat-label>
+        <input matInput [formControl]="control" (input)="setName()">
+    </mat-form-field>
+    <button mat-button (click)="addOption()" matTooltip="Agregar opcion" [disabled]="control.invalid">
         <mat-icon>add</mat-icon>
     </button>
 </div>

@@ -19,4 +19,8 @@ export class FormsService {
   getFormByName(name: string) {
     return this.http.get<Form>(`${this.formsEndpoint}/getOne/${name}`);
   }
+
+  createForm(body: Form) {
+    return this.http.post<Form>(`${this.formsEndpoint}/create`, body);
+  }
 }

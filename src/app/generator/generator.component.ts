@@ -5,6 +5,9 @@ import { Form } from '@models/form';
 import { AuthService } from '../services/auth.service';
 import { onInputChange, turnToValidFieldName } from '../utilities/common';
 import { Answer } from '@models/answer';
+import { FormsService } from '../services/forms.service';
+import { UtilsService } from '../services/utils.service';
+import { Router } from '@angular/router';
 
 type FieldDictionary<T> = {
   [x in FieldType]: T;
@@ -123,6 +126,9 @@ export class GeneratorComponent {
   constructor(
     private builder: FormBuilder,
     private auth: AuthService,
+    private forms: FormsService,
+    private utils: UtilsService,
+    private router: Router,
   ) { }
 
   /**
@@ -148,7 +154,13 @@ export class GeneratorComponent {
    * enviar al servidor el objeto con la estructura del formulario
    */
   submit() {
-    console.log(this.form);
+    this.forms.createForm(this.form).subscribe({
+      next: () => {
+        this.utils.showNotification('formulario creado');
+        this.router.navigate(['/menu']);
+      },
+      error: () => this.utils.showNotification('no se pudo crear el formulario'),
+    });
   }
 
   getErrorMessage(group: FormGroup, errors: FormError[]): string {
