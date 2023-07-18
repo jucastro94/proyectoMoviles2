@@ -2,7 +2,7 @@
     <mat-label>
         {{field.label}}
     </mat-label>
-    <mat-select [multiple]="field.multiple">
+    <mat-select (selectionChange)="propagateChange($event)">
         <mat-option *ngFor="let item of field.options">
             {{item}}
         </mat-option>

@@ -25,6 +25,7 @@ const routes: Routes = [
     MatTabsModule,
     MatTableModule,
     FormBuilderModule,
+    MatTableModule,
   ],
 })
 export class ReportsModule { }

@@ -17,4 +17,8 @@ export class FormComponent {
 
   @Output()
   answerChange = new EventEmitter<Answer>();
+
+  setValue(field: string, value: string) {
+    this.answer[field] = value;
+  }
 }

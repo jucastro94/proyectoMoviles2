@@ -2,5 +2,5 @@
     <mat-label>
         {{field.label}}
     </mat-label>
-    <input matInput required>
+    <input matInput (input)="propagateChange($event)">
 </mat-form-field>

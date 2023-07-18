@@ -19,6 +19,7 @@
             <app-field-viewer 
                 *ngFor="let input of form.fields" 
                 [field]="input"
+                (change)="setValue(input.name, $event)"
             >
             </app-field-viewer>
         </div>
