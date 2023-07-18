@@ -77,6 +77,6 @@ export class AuthService {
   }
 
   deleteAccount(userid: string) {
-    return this.http.delete<void>(`${this.path}/delete`);
+    return this.http.delete<void>(`${this.path}/delete/${userid}`);
   }
 }

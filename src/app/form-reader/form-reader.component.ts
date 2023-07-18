@@ -55,7 +55,15 @@ export class FormReaderComponent {
   }
 
   submit() {
-    console.log(this.answer);
+    if (this.answer) {
+      this.forms.submitEntry(this.answer).subscribe({
+        next: () => {
+          this.utils.showNotification('respuesta enviada');
+          this.router.navigate(['/menu']);
+        },
+        error: () => this.utils.showNotification('no se pudo enviar su respuesta'),
+      });
+    }
   }
 
 }
