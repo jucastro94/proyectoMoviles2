@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">gestion-perfecta</string>
+    <string name="title_activity_main">gestion-perfecta</string>
+    <string name="package_name">com.mobilesappsii.app</string>
+    <string name="custom_url_scheme">com.mobilesappsii.app</string>
+</resources>
