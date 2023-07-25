@@ -1,7 +1,9 @@
 <mat-card class="formConfig">
-    <mat-card-title>
-        Configuracion del formulario
-    </mat-card-title>
+    <mat-card-header>
+        <h3>
+            Configuración del formulario
+        </h3>
+    </mat-card-header>
     <mat-card-content>
         <form [formGroup]="formControl">
 
@@ -34,12 +36,13 @@
 </mat-card>
 
 <mat-card>
-    <mat-card-title>
-        Configurar campos
-    </mat-card-title>
+    <mat-card-header>
+        <h3>
+            Configurar campos
+        </h3>
+    </mat-card-header>
     <mat-card-content>
         <form>
-
             <mat-form-field>
                 <mat-label>Tipo de campo</mat-label>
                 <mat-select #input (selectionChange)="selected = $event.value">
@@ -48,32 +51,33 @@
                     </mat-option>
                 </mat-select>
             </mat-form-field>
-
         </form>
     </mat-card-content>
-    <mat-card-actions>
-        <button 
-            mat-icon-button 
-            (click)="invoke(selected)" 
-            matTooltip="Crear un campo" 
-            [disabled]="selected === ''"
-        >
-            <mat-icon>add</mat-icon>
-        </button>
-    </mat-card-actions>
+    <button 
+        mat-stroked-button 
+        (click)="invoke(selected)" 
+        matTooltip="Crear un campo" 
+        [disabled]="selected === ''"
+    >
+        Configurar nuevo campo
+    </button>
+    <button 
+        mat-stroked-button 
+        color="warn"
+        (click)="add()" 
+        [disabled]="!field || !canAddField" 
+    >
+        Agregar campo al formulario
+    </button>
 </mat-card>
 
-<h3>Previsualizacion del campo</h3>
+<h3>Previsualización del campo</h3>
 <mat-divider></mat-divider>
 <div>
-    <app-field-editor [field]="field" *ngIf="field" #previewField></app-field-editor>
-    <button 
-        mat-button 
-        (click)="add()" 
-        [disabled]="!field" 
-    >
-        Agregar
-    </button>
+    <app-field-editor [field]="field" *ngIf="field; else noField" #previewField (validityChange)="canAddField = $event"></app-field-editor>
+    <ng-template #noField>
+        No hay un campo siendo configurado ahora mismo.
+    </ng-template>
 </div>
 
 <h3>Vista previa del formulario</h3>

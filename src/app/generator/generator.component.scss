@@ -1,9 +1,3 @@
-mat-card {
-    margin-bottom: 15px;
-}
-
-.formConfig {
-    mat-form-field {
-        display: block;
-    }
+mat-form-field, button {
+    width: 100%;
 }

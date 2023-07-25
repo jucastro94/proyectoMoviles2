@@ -27,7 +27,7 @@ export class RadioEditorComponent {
     const inputValue = (event.target as HTMLInputElement).value;
     this.field.options[index] = inputValue;
     const foundInvalid = this.options.find(option => !option.valid);
-    this.validityChange.emit(!foundInvalid);
+    this.validityChange.emit(!foundInvalid && this.options.length > 0);
   }
 
   setName() {

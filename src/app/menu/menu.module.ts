@@ -4,6 +4,7 @@ import { MenuComponent } from './menu.component';
 import { MatRippleModule } from '@angular/material/core';
 import { RouterModule, Routes } from '@angular/router';
 import { MatDividerModule } from '@angular/material/divider';
+import { SharedModule } from '../shared/shared.module';
 
 const routes: Routes = [
   {
@@ -21,6 +22,7 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     MatRippleModule,
     MatDividerModule,
+    SharedModule,
   ],
 })
 export class MenuModule { }

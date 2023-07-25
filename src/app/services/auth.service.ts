@@ -4,6 +4,7 @@ import { NotLogged, User } from '../models/user';
 import { HttpClient } from '@angular/common/http';
 import { API } from '../utilities/common';
 import { map } from 'rxjs';
+import { UtilsService } from './utils.service';
 
 @Injectable({
   providedIn: 'root'
@@ -19,6 +20,7 @@ export class AuthService {
   constructor(
     private router: Router,
     private readonly http: HttpClient,
+    private readonly utils: UtilsService,
   ) { }
 
   /**
@@ -28,12 +30,15 @@ export class AuthService {
     const post = new NotLogged();
     post.email = email;
     post.password = password;
-    this.http.post<{token: string; id: string}>(`${this.path}/login`, post).subscribe(({ token, id }) => {
-      this.isLogged.set(true);
-      localStorage.setItem('token', token);
-      localStorage.setItem('id', id);
-      this.fetchUserData(id).subscribe(response => this.user.set(response));
-      this.router.navigate(['/menu']);
+    this.http.post<{token: string; id: string}>(`${this.path}/login`, post).subscribe({
+      next: ({ token, id }) => {
+        this.isLogged.set(true);
+        localStorage.setItem('token', token);
+        localStorage.setItem('id', id);
+        this.fetchUserData(id).subscribe(response => this.user.set(response));
+        this.router.navigate(['/menu']);
+      },
+      error: () => this.utils.showNotification('Usuario no encontrado'),
     });
   }
 

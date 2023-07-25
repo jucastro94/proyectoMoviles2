@@ -1,19 +1,18 @@
 <form [formGroup]="control">
     <mat-form-field>
+        <mat-label>Etiqueta del campo</mat-label>
+        <input 
+            matInput 
+            (input)="onChange($event)"
+            placeholder="Ej. Punto de venta..." 
+            required 
+            formControlName="label"
+        >
+    </mat-form-field>
+
+    <mat-form-field>
         <mat-label>{{field.label}}</mat-label>
         <input matInput required placeholder="Previsualizacion...">
     </mat-form-field>
 
-    <div>
-        <mat-form-field>
-            <mat-label>Etiqueta</mat-label>
-            <input 
-                matInput 
-                (input)="onChange($event)"
-                placeholder="Nombre..." 
-                required 
-                formControlName="label"
-            >
-        </mat-form-field>
-    </div>
 </form>

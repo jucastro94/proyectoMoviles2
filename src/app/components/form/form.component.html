@@ -12,16 +12,14 @@
         </mat-form-field>
         <mat-form-field>
             <mat-label>Hora y fecha actual</mat-label>
-            <input matInput readonly type="datetime" [value]="answer.creationDate">
+            <input matInput readonly type="datetime" [value]="answer.creationDate | date: 'yyyy-MM-dd HH:mm:ss'">
         </mat-form-field>
     
-        <div>
-            <app-field-viewer 
-                *ngFor="let input of form.fields" 
-                [field]="input"
-                (change)="setValue(input.name, $event)"
-            >
-            </app-field-viewer>
-        </div>
+        <app-field-viewer 
+            *ngFor="let input of form.fields" 
+            [field]="input"
+            (change)="setValue(input.name, $event)"
+        >
+        </app-field-viewer>
     </mat-card-content>
 </mat-card>

@@ -1,31 +1,41 @@
-<div class="menu" role="menu">
-    <div 
-        class="mat-elevation-z4 button" 
-        matRipple 
+<h3>Administracion</h3>
+<mat-list>
+  <mat-list-item>
+    <button
         *ngIf="loggedUser().role.manageUsers" 
         routerLink="/users"
+        mat-flat-button
+        color="accent"
     >
         Usuarios
-    </div>
-    <div 
-        class="mat-elevation-z4 button" 
-        matRipple 
+    </button>
+  </mat-list-item>
+  <mat-list-item>
+    <button 
         *ngIf="loggedUser().role.watchReports" 
         routerLink="/reports"
+        mat-flat-button
+        color="accent"
     >
         Informes por dias
-    </div>
-    <div class="mat-elevation-z4 button" matRipple routerLink="/forms/new">
+    </button>
+  </mat-list-item>
+  <mat-list-item>
+    <button routerLink="/forms/new" mat-flat-button color="accent">
         Generador de formularios
-    </div>
+    </button>
+  </mat-list-item>
+</mat-list>
 
-</div>
-<mat-divider></mat-divider>
-<div 
-    class="mat-elevation-z4 button" 
-    *ngFor="let form of forms; let i = index" 
-    matRipple 
-    [routerLink]=" '/forms/' + forms[i].name"
->
-    {{form.title}}
-</div>
+<h3>Mis formularios</h3>
+<mat-list>
+    <mat-list-item *ngFor="let form of forms; let i = index" >
+        <button 
+            mat-flat-button 
+            [routerLink]=" '/forms/' + forms[i].name"
+            color="primary"
+        >
+            {{form.title}}
+        </button>
+    </mat-list-item>
+</mat-list>

@@ -1,21 +1,11 @@
 .main {
-    display: flex;
-    justify-content: center;
-    padding: 5%;
-    flex-direction: column;
-}
+    padding: 0px 10px 15px 10px;
 
-form {
-    width: 75%;
+    mat-form-field {
+        width: 100%;
+    }
 
-    .row {
-        mat-form-field {
-            width: 50%;
-        }
+    button {
+        width: 100%;
     }
 }
-
-form > *  {
-    width: 100%;
-}
-

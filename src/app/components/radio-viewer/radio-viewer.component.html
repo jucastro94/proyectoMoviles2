@@ -1,8 +1,10 @@
-<b>
-    {{field.label}}
-</b>
-<mat-radio-group (change)="propagateChange($event)">
-    <mat-radio-button *ngFor="let item of field.options" [value]="item">
-        {{item}}
-    </mat-radio-button>
-</mat-radio-group>
+<div>
+    <b>
+        {{field.label}}
+    </b>
+    <mat-radio-group (change)="propagateChange($event)">
+        <mat-radio-button *ngFor="let item of field.options" [value]="item">
+            {{item}}
+        </mat-radio-button>
+    </mat-radio-group>
+</div>

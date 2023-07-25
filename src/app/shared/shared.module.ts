@@ -12,6 +12,23 @@ import { MatCardModule } from '@angular/material/card';
 import { MatSelectModule } from '@angular/material/select';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatRadioModule } from '@angular/material/radio';
+import { MatListModule } from '@angular/material/list'; 
+
+const modules = [
+  HttpClientModule,
+  MatIconModule,
+  MatButtonModule,
+  MatFormFieldModule,
+  MatInputModule,
+  MatSelectModule,
+  MatCheckboxModule,
+  MatRadioModule,
+  MatSnackBarModule,
+  MatDialogModule,
+  MatTooltipModule,
+  MatCardModule,
+  MatListModule,
+]
 
 /**
  * common task-related stuff used across the entire app
@@ -21,32 +38,10 @@ import { MatRadioModule } from '@angular/material/radio';
   ],
   imports: [
     CommonModule,
-    HttpClientModule,
-    MatIconModule,
-    MatButtonModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatSelectModule,
-    MatCheckboxModule,
-    MatRadioModule,
-    MatSnackBarModule,
-    MatDialogModule,
-    MatTooltipModule,
-    MatCardModule,
+    ...modules,
   ],
   exports: [
-    MatIconModule,
-    MatButtonModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatSelectModule,
-    MatCheckboxModule,
-    MatRadioModule,
-    MatSnackBarModule,
-    MatDialogModule,
-    HttpClientModule,
-    MatTooltipModule,
-    MatCardModule,
+    ...modules,
   ],
   providers: [],
 })

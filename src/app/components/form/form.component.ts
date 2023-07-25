@@ -18,6 +18,9 @@ export class FormComponent {
   @Output()
   answerChange = new EventEmitter<Answer>();
 
+  @Output()
+  validityChange = new EventEmitter<boolean>();
+
   setValue(field: string, value: string) {
     this.answer[field] = value;
   }
