@@ -14,12 +14,22 @@
     </mat-radio-group>
 </div>
 
-<div>
+<div class="form">
     <mat-form-field>
         <mat-label>Nombre del campo</mat-label>
-        <input matInput [formControl]="control" (input)="setName()">
+        <input 
+            matInput 
+            [formControl]="control" 
+            (input)="setName()" 
+            placeholder="Ej. Calificacion del evento"
+        >
     </mat-form-field>
-    <button mat-button (click)="addOption()" matTooltip="Agregar opcion" [disabled]="control.invalid">
-        <mat-icon>add</mat-icon>
+    <button 
+        mat-stroked-button 
+        (click)="addOption()" 
+        matTooltip="Agregar opcion" 
+        [disabled]="control.invalid"
+    >
+        Agregar opción
     </button>
 </div>

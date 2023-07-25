@@ -1,15 +1,31 @@
 <ng-container [ngSwitch]="field.type">
     <div *ngSwitchCase="'text'">
-        <app-text-editor [field]="field" (validityChange)="isValid = $event"></app-text-editor>
+        <app-text-editor 
+            [field]="field" 
+            (validityChange)="validityHasChanged($event)"
+        >
+        </app-text-editor>
     </div>
     <div *ngSwitchCase="'checkbox'">
-        <app-checkbox-editor [field]="field | cast: CheckboxField" (validityChange)="isValid = $event"></app-checkbox-editor>
+        <app-checkbox-editor 
+            [field]="field | cast: CheckboxField" 
+            (validityChange)="validityHasChanged($event)"
+        >
+        </app-checkbox-editor>
     </div>
     <div *ngSwitchCase="'radio'">
-        <app-radio-editor [field]="field | cast: RadioField" (validityChange)="isValid = $event"></app-radio-editor>
+        <app-radio-editor 
+            [field]="field | cast: RadioField" 
+            (validityChange)="validityHasChanged($event)"
+        >
+        </app-radio-editor>
     </div>
     <div *ngSwitchCase="'selector'">
-        <app-selector-editor [field]="field | cast: SelectorField" (validityChange)="isValid = $event"></app-selector-editor>
+        <app-selector-editor 
+            [field]="field | cast: SelectorField" 
+            (validityChange)="validityHasChanged($event)"
+        >
+        </app-selector-editor>
     </div>
     <div *ngSwitchDefault>
         Tipo de campo no reconocido

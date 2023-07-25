@@ -44,8 +44,8 @@ export const onInputChange = (event: Event): string => {
 /**
  * direccion de la api
  */
-//export const API = 'http://localhost:3000';
-export const API = 'https://apimovilesdosfinal.azurewebsites.net';
+export const API = 'https://appidos.eastus.cloudapp.azure.com';
+
 
 /**
  * convetir un string dado por un usuario en uno valido para usar en db o js objects. haciendo lo siguiente:

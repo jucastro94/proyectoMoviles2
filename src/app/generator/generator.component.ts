@@ -66,24 +66,6 @@ export class GeneratorComponent {
   };
 
   /**
-   * helper para mostrar en el template cuales empleados pueden verlo
-   */
-  readonly permissionIndex = [
-    {
-      label: 'Todos',
-      value: ['Administrador', 'Empleado'],
-    },
-    {
-      label: 'Empleado',
-      value: ['Empleado'],
-    },
-    {
-      label: 'Empleado',
-      value: ['Administrador'],
-    },
-  ];
-
-  /**
    * indice para imprimir de manera legible para el usuario los tipos de campos que 
    * se soportan
    */
@@ -99,10 +81,6 @@ export class GeneratorComponent {
     {
       value: 'radio',
       label: 'Opcion unica',
-    },
-    {
-      value: 'selector',
-      label: 'Seleccion',
     },
   ];
 
@@ -122,6 +100,8 @@ export class GeneratorComponent {
     {error: 'required', message: 'Este campo es requerido'}, 
     {error: 'minlength', message: 'Minimo 2 caracteres'},
   ];
+
+  canAddField = false;
 
   constructor(
     private builder: FormBuilder,

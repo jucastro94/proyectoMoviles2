@@ -1,9 +1,8 @@
-<div>
-    <mat-checkbox [value]="field.label">
-        {{field.label}}
-    </mat-checkbox>
-    <mat-form-field>
-        <mat-label>Texto de la etiqueta</mat-label>
-        <input matInput [formControl]="control" (input)="onChange($event)" required>
-    </mat-form-field>
-</div>
+<mat-form-field>
+    <mat-label>Texto de la etiqueta</mat-label>
+    <input matInput [formControl]="control" (input)="onChange($event)" required>
+</mat-form-field>
+<br>
+<mat-checkbox [value]="field.label">
+    {{field.label}}
+</mat-checkbox>

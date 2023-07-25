@@ -4,7 +4,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { UtilsService } from '../services/utils.service';
 import { Employee, User } from '@models/user';
 import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
-import { MatCheckboxChange } from '@angular/material/checkbox';
 
 @Component({
   selector: 'app-profile',

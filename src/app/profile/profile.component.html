@@ -62,7 +62,7 @@
 
         <button 
             mat-raised-button 
-            color="primary" 
+            color="accent" 
             (click)="modifyBody()" 
             [disabled]="control.invalid" 
             *ngIf="!isNew"
@@ -96,7 +96,7 @@
             <input matInput type="password" formControlName="confirmPassword">
         </mat-form-field>
 
-        <button mat-raised-button color="primary" (click)="changePassword()" [disabled]="passwordManager.invalid">
+        <button mat-stroked-button color="warn" (click)="changePassword()" [disabled]="passwordManager.invalid">
             Actualizar Contrasena
         </button>
     </form>

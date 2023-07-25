@@ -1,40 +1,64 @@
-<div class="main">
-    <form [formGroup]="form" *ngIf="mode === 'login'; else recoverTag" (submit)="login()">
+<div class="background">
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
 
-        <mat-form-field appearance="outline">
-            <mat-label>Email</mat-label>
-            <input matInput type="email" formControlName="email">
-        </mat-form-field>
+    <mat-card>
+        <mat-card-header>
+            <img src="https://static.vecteezy.com/system/resources/previews/008/442/086/original/illustration-of-human-icon-user-symbol-icon-modern-design-on-blank-background-free-vector.jpg" alt="logo">
+        </mat-card-header>
+        <form [formGroup]="form" *ngIf="mode === 'login'; else recoverTag" (submit)="login()">
 
-        <mat-form-field appearance="outline">
-            <mat-label>Contrasena</mat-label>
-            <input matInput type="password" formControlName="password">
-        </mat-form-field>
-        
-        <a mat-button (click)="mode = 'recover'">
-            <small>He olvidado la contrasena</small>
-        </a>
-        <div class="buttonsection">
-            <button mat-raised-button color="primary" [disabled]="!form.valid" type="submit">
-                Ingresar
-            </button>
-        </div>
-    </form>
-    <ng-template #recoverTag>
-        <form>
             <mat-form-field appearance="outline">
-                <mat-label># Cedula</mat-label>
-                <input type="number" matInput [formControl]="recover">
+                <mat-label>Email</mat-label>
+                <input matInput type="email" formControlName="email">
+            </mat-form-field>
+    
+            <mat-form-field appearance="outline">
+                <mat-label>Contrasena</mat-label>
+                <input matInput type="password" formControlName="password">
             </mat-form-field>
             
-            <a mat-button (click)="mode = 'login'">
-                <small>Ingresar</small>
-            </a>
+            <!-- <a mat-button (click)="mode = 'recover'">
+                <small>He olvidado la contrasena</small>
+            </a> -->
             <div class="buttonsection">
-                <button mat-raised-button color="primary" [disabled]="!recover.valid" type="submit">
-                    Enviar correo de recuperacion
+                <button mat-raised-button color="primary" [disabled]="!form.valid" type="submit">
+                    Ingresar
                 </button>
             </div>
         </form>
-    </ng-template>
+        <ng-template #recoverTag>
+            <form>
+                <mat-form-field appearance="outline">
+                    <mat-label># Cedula</mat-label>
+                    <input type="number" matInput [formControl]="recover">
+                </mat-form-field>
+                
+                <a mat-button (click)="mode = 'login'">
+                    <small>Ingresar</small>
+                </a>
+                <div class="buttonsection">
+                    <button mat-raised-button color="primary" [disabled]="!recover.valid" type="submit">
+                        Enviar correo de recuperacion
+                    </button>
+                </div>
+            </form>
+        </ng-template>    
+    </mat-card>
+</div>
+
+
+<div class="main">
+
 </div>
